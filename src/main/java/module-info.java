@@ -9,6 +9,8 @@ module org.example.newchronopos {
     requires org.kordamp.bootstrapfx.core;
     requires com.almasb.fxgl.all;
     requires java.sql;
+    requires java.desktop;
+    requires jbcrypt;
 
     opens org.example.newchronopos to javafx.fxml;
     opens org.example.newchronopos.controller to javafx.fxml;

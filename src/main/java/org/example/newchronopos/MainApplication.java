@@ -11,23 +11,15 @@ import java.io.IOException;
 public class MainApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        DatabaseInitializer.initialize(); // Ensures schema is created
+        DatabaseInitializer.initialize();   // creates schema + default users
 
-        var fxmlUrl = getClass().getResource("/views/product.fxml");
-        if (fxmlUrl == null) {
-            throw new IOException("FXML file not found: /views/product.fxml");
-        }
-        FXMLLoader fxmlLoader = new FXMLLoader(fxmlUrl);
-        Scene scene = new Scene(fxmlLoader.load());
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/Login.fxml"));
+        Scene scene = new Scene(loader.load());
 
-        var cssUrl = getClass().getResource("/css/style.css");
-        if (cssUrl != null) {
-            scene.getStylesheets().add(cssUrl.toExternalForm());
-        } else {
-            System.err.println("Warning: CSS file not found: /css/style.css");
-        }
+        var css = getClass().getResource("/css/style.css");
+        if (css != null) scene.getStylesheets().add(css.toExternalForm());
 
-        stage.setTitle("Eaze POS - Product View");
+        stage.setTitle("Eaze POS - Login");
         stage.setScene(scene);
         stage.show();
     }
