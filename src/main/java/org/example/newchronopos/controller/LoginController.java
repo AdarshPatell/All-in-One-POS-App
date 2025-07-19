@@ -78,7 +78,7 @@ public class LoginController {
         User user = userDAO.findByUsername(username);
         if (user != null && userDAO.checkPassword(user, password)) {
             switch (user.getRole().toLowerCase()) {
-                case "admin", "cashier", "manager" -> loadScene("product.fxml");
+                case "admin", "cashier", "manager" -> loadScene("Products.fxml");
                 default -> showError("Unknown user role: " + user.getRole());
             }
             return;

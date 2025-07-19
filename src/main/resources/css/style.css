@@ -73,3 +73,101 @@
 .button:hover {
     -fx-background-color: #005a9e;
 }
+
+
+/* --- General --- */
+.root {
+    -fx-font-family: 'Segoe UI', sans-serif;
+}
+
+/* --- TableView Styling --- */
+.table-view {
+   -fx-background-color: #3a3a3a;
+   -fx-border-color: #505050;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #2D2D2D;
+}
+
+.table-view .column-header {
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #E0E0E0;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER_LEFT;
+}
+
+.table-view .table-cell {
+    -fx-text-fill: white;
+    -fx-background-color: #3a3a3a;
+    -fx-border-color: transparent transparent #505050 transparent;
+    -fx-padding: 10px;
+    -fx-font-size: 13px;
+}
+
+/* Style for selected rows */
+.table-view .table-row-cell:selected {
+    -fx-background-color: #555555;
+}
+
+/* --- Button Styling --- */
+.button {
+    -fx-background-color: #E57A44; /* Your brand orange color */
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5px;
+}
+
+.button:hover {
+    -fx-background-color: #D46A33;
+}
+
+/* Style for action buttons */
+.table-view .button {
+    -fx-background-color: #505050;
+    -fx-padding: 5px 10px;
+}
+.table-view .button:hover {
+    -fx-background-color: #6a6a6a;
+}
+
+.nav-btn {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-opacity: 0.7;
+    -fx-alignment: CENTER_LEFT;
+    -fx-pref-width: 170;
+}
+
+.tab-btn {
+    -fx-background-color: #2d2d2d;
+    -fx-text-fill: white;
+    -fx-opacity: 0.7;
+    -fx-pref-height: 40;
+    -fx-pref-width: 140;
+}
+
+.tab-btn-selected {
+    -fx-background-color: #fc5c65;
+    -fx-text-fill: white;
+    -fx-pref-height: 40;
+    -fx-pref-width: 140;
+}
+
+.category-btn {
+    -fx-background-color: #2d2d2d;
+    -fx-text-fill: white;
+    -fx-opacity: 0.8;
+    -fx-pref-width: 100;
+    -fx-pref-height: 60;
+}
+
+.category-btn-selected {
+    -fx-background-color: #fc5c65;
+    -fx-text-fill: white;
+    -fx-pref-width: 100;
+    -fx-pref-height: 60;
+}

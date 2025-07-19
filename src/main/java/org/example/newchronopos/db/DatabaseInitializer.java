@@ -50,7 +50,13 @@ public class DatabaseInitializer {
                 CREATE TABLE IF NOT EXISTS product (
                     id IDENTITY PRIMARY KEY,
                     name VARCHAR(100),
-                    price DECIMAL(10, 2)
+                    description VARCHAR(255),
+                    itemId VARCHAR(50),
+                    stock INT,
+                    category VARCHAR(100),
+                    price DECIMAL(10, 2),
+                    photoPath VARCHAR(255),
+                    availability VARCHAR(50)
                 )
             """);
 

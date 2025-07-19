@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #1c1c1e;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21" fx:controller="org.example.newchronopos.controller.ProductsController">
+    <children>
+        <HBox spacing="0" AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.bottomAnchor="0">
+            <!-- Sidebar -->
+            <VBox prefWidth="200" style="-fx-background-color: #2d2d2d;">
+                <padding>
+                    <Insets top="20" left="15" right="15" bottom="20" />
+                </padding>
+                <children>
+                    <Label text="CRONOPOS" textFill="white">
+                        <font>
+                            <Font size="20.0" />
+                        </font>
+                        <VBox.margin>
+                            <Insets bottom="30" />
+                        </VBox.margin>
+                    </Label>
+
+                    <Button text="Dashboard" style="-fx-background-color: #fc5c65; -fx-text-fill: white;" prefWidth="170"/>
+                    <Button text="Transactions" styleClass="nav-btn"/>
+                    <Button text="Back Office" styleClass="nav-btn"/>
+                    <Button text="Reports" styleClass="nav-btn"/>
+                    <Button text="Settings" styleClass="nav-btn"/>
+
+                    <VBox fx:id="logoutSection" alignment="BOTTOM_LEFT" spacing="10.0" VBox.vgrow="ALWAYS">
+                        <Button text="Logout" style="-fx-background-color: transparent; -fx-text-fill: white;" />
+                    </VBox>
+                </children>
+            </VBox>
+
+            <!-- Main Content -->
+            <VBox spacing="20" style="-fx-background-color: #1c1c1e;" HBox.hgrow="ALWAYS">
+                <padding>
+                    <Insets top="30" left="30" right="30" bottom="30" />
+                </padding>
+                <children>
+                    <!-- Header -->
+                    <HBox alignment="CENTER_LEFT" spacing="10.0">
+                        <Label text="Products" textFill="white">
+                            <font>
+                                <Font size="26.0" />
+                            </font>
+                        </Label>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Button text="Add New Category" style="-fx-background-color: #ff6b6b; -fx-text-fill: white;" />
+                    </HBox>
+
+                    <!-- Categories -->
+                    <HBox spacing="10">
+                        <Button text="All\n116 items" styleClass="category-btn-selected"/>
+                        <Button text="Pizza\n20 items" styleClass="category-btn"/>
+                        <Button text="Burger\n15 items" styleClass="category-btn"/>
+                        <Button text="Chicken\n10 items" styleClass="category-btn"/>
+                        <Button text="Bakery\n18 items" styleClass="category-btn"/>
+                        <Button text="Beverage\n12 items" styleClass="category-btn"/>
+                        <Button text="Seafood\n16 items" styleClass="category-btn"/>
+                    </HBox>
+
+                    <!-- Product Tabs -->
+                    <HBox spacing="10">
+                        <Button text="All Products" styleClass="tab-btn-selected"/>
+                        <Button text="Special Deals" styleClass="tab-btn"/>
+                        <Button text="New Year Special" styleClass="tab-btn"/>
+                        <Button text="Deserts and Drinks" styleClass="tab-btn"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Button text="Add New Product" style="-fx-background-color: #ff6b6b; -fx-text-fill: white;" />
+                    </HBox>
+
+                    <!-- Product Table -->
+                    <TableView fx:id="productTable" style="-fx-background-color: #2a2a2c; -fx-text-fill: white;" prefHeight="600">
+                        <columns>
+                            <TableColumn fx:id="colProduct" text="Product" prefWidth="250" />
+                            <TableColumn fx:id="colItemId" text="Item ID" prefWidth="100" />
+                            <TableColumn fx:id="colStock" text="Stock" prefWidth="100" />
+                            <TableColumn fx:id="colCategory" text="Category" prefWidth="100" />
+                            <TableColumn fx:id="colPrice" text="Price" prefWidth="100" />
+                            <TableColumn fx:id="colAvailability" text="Availability" prefWidth="100" />
+                            <TableColumn fx:id="colAction" text="Action" prefWidth="100" />
+                        </columns>
+                    </TableView>
+                </children>
+            </VBox>
+        </HBox>
+    </children>
+</AnchorPane>
