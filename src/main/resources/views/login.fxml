@@ -1,28 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
 
-<VBox spacing="15" alignment="CENTER"
-      xmlns="http://javafx.com/javafx/17"
-      xmlns:fx="http://javafx.com/fxml"
-      fx:controller="org.example.newchronopos.controller.LoginController">
+<StackPane xmlns="http://javafx.com/javafx/17"
+           xmlns:fx="http://javafx.com/fxml"
+           fx:controller="org.example.newchronopos.controller.LoginController"
+           style="-fx-background-color: #111315;"> <!-- BLACK_ALT -->
 
-    <padding>
-        <Insets top="40" right="40" bottom="40" left="40"/>
-    </padding>
+    <VBox alignment="CENTER" spacing="20">
+        <!-- App Title -->
+        <Label text="ChronoPOS"
+               style="-fx-font-size: 36px; -fx-text-fill: #FF8671; -fx-font-weight: bold;"/>
 
-    <Label text="Login to POS" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+        <!-- Login Card -->
+        <VBox spacing="15" alignment="CENTER" maxWidth="500" minHeight="450" prefHeight="500"
+              style="-fx-background-color: #292C2D; -fx-background-radius: 12px;
+                     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 10, 0, 0, 5);">
 
-    <!-- FIXED ID -->
-    <TextField fx:id="usernameField" promptText="Username" maxWidth="250"/>
-    <PasswordField fx:id="passwordField" promptText="Password" maxWidth="250"/>
+            <padding>
+                <Insets top="30" right="30" bottom="30" left="30"/>
+            </padding>
 
-    <Button text="Login"
-            onAction="#handleLogin"
-            defaultButton="true"
-            maxWidth="100"/>
+            <!-- Heading Section -->
+            <VBox spacing="10" alignment="CENTER">
+                <Label text="Login!"
+                       style="-fx-font-size: 24px; -fx-text-fill: white; -fx-font-weight: bold;"/>
+                <Label text="Please enter your credentials to continue"
+                       style="-fx-font-size: 14px; -fx-text-fill: white; -fx-font-weight: bold;"/>
+            </VBox>
+            <Region prefHeight="5"/>
 
-    <Label fx:id="lblError" textFill="#c62828" style="-fx-font-size: 14px;" wrapText="true" maxWidth="250"/>
+            <!-- Spacer VBox for input fields -->
+            <VBox spacing="20" alignment="CENTER">
+                <!-- Username -->
+                <TextField fx:id="usernameField" promptText="Username" maxWidth="280" prefHeight="40"
+                           style="-fx-background-color: #777979; -fx-text-fill: white;
+                                  -fx-background-radius: 8px;"/>
 
-</VBox>
+                <!-- Password Row -->
+                <HBox spacing="8" alignment="CENTER_RIGHT" maxWidth="280" prefHeight="40">
+                    <TextField fx:id="visiblePasswordField" promptText="Password" prefHeight="40"
+                               style="-fx-background-color: #777979; -fx-text-fill: white;
+                                      -fx-background-radius: 8px;" HBox.hgrow="ALWAYS"/>
+
+                    <PasswordField fx:id="passwordField" promptText="Password" prefHeight="40"
+                                   style="-fx-background-color: #777979; -fx-text-fill: white;
+                                          -fx-background-radius: 8px;" HBox.hgrow="ALWAYS"/>
+
+                    <Button fx:id="togglePasswordBtn" prefHeight="40" prefWidth="40"
+                            text="👁"
+                            onAction="#togglePasswordVisibility"
+                            style="-fx-font-size: 14px; -fx-padding: 4 6 4 6;
+                                   -fx-background-color: #777979; -fx-text-fill: white;"/>
+                </HBox>
+            </VBox>
+
+            <!-- Login Button -->
+            <Button text="Login"
+                    onAction="#handleLogin"
+                    defaultButton="true"
+                    style="-fx-background-color: #FF8671; -fx-text-fill: white;
+                           -fx-font-size: 14px; -fx-background-radius: 6px;"
+                    maxWidth="140"/>
+
+            <!-- Error Label -->
+            <Label fx:id="lblError"
+                   wrapText="true" maxWidth="280"
+                   style="-fx-text-fill: #E70000; -fx-font-size: 13px;"/>
+
+            <!-- Forgot Password -->
+            <Label text="Forgot Password?"
+                   style="-fx-text-fill: #FF8671; -fx-font-size: 13px; -fx-underline: true;"/>
+        </VBox>
+    </VBox>
+</StackPane>

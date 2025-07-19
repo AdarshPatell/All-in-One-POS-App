@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import org.example.newchronopos.dao.OwnerDAO;
 import org.example.newchronopos.dao.UserDAO;
@@ -15,30 +16,65 @@ public class LoginController {
 
     @FXML private TextField usernameField;
     @FXML private PasswordField passwordField;
+    @FXML private TextField visiblePasswordField;
+    @FXML private Button togglePasswordBtn;
     @FXML private Label lblError;
 
+    private boolean isPasswordVisible = false;
     private final OwnerDAO ownerDAO = new OwnerDAO();
     private final UserDAO userDAO = new UserDAO();
 
     @FXML
+    public void initialize() {
+        // Initial visibility
+        visiblePasswordField.setManaged(false);
+        visiblePasswordField.setVisible(false);
+
+        // Bind content of password and visiblePassword
+        visiblePasswordField.textProperty().bindBidirectional(passwordField.textProperty());
+
+        // Insert visible password field at the same position
+        HBox parent = (HBox) passwordField.getParent();
+        if (!parent.getChildren().contains(visiblePasswordField)) {
+            parent.getChildren().add(0, visiblePasswordField);
+        }
+    }
+
+    @FXML
+    private void togglePasswordVisibility() {
+        isPasswordVisible = !isPasswordVisible;
+
+        if (isPasswordVisible) {
+            visiblePasswordField.setVisible(true);
+            visiblePasswordField.setManaged(true);
+            passwordField.setVisible(false);
+            passwordField.setManaged(false);
+        } else {
+            passwordField.setVisible(true);
+            passwordField.setManaged(true);
+            visiblePasswordField.setVisible(false);
+            visiblePasswordField.setManaged(false);
+        }
+    }
+
+    @FXML
     public void handleLogin(ActionEvent event) {
         String username = usernameField.getText().trim();
-        String password = passwordField.getText();
+        String password = passwordField.isVisible() ? passwordField.getText() : visiblePasswordField.getText();
 
-        // Check for empty input
         if (username.isEmpty() || password.isEmpty()) {
             showError("Please enter both username and password.");
             return;
         }
 
-        // Try owner login
+        // Check Owner
         Owner owner = ownerDAO.findByUsername(username);
         if (owner != null && ownerDAO.checkPassword(owner, password)) {
-            loadScene("OwnerDashboard.fxml");  // Owner view
+            loadScene("OwnerDashboard.fxml");
             return;
         }
 
-        // Try user login
+        // Check User
         User user = userDAO.findByUsername(username);
         if (user != null && userDAO.checkPassword(user, password)) {
             switch (user.getRole().toLowerCase()) {
@@ -48,7 +84,6 @@ public class LoginController {
             return;
         }
 
-        // Login failed
         showError("Invalid credentials. Please try again.");
     }
 
