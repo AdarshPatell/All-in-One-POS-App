@@ -11,6 +11,7 @@ module org.example.newchronopos {
     requires java.sql;
     requires java.desktop;
     requires jbcrypt;
+    opens org.example.newchronopos.model to javafx.base;
 
     opens org.example.newchronopos to javafx.fxml;
     opens org.example.newchronopos.controller to javafx.fxml;

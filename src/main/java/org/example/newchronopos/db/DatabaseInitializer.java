@@ -45,19 +45,123 @@ public class DatabaseInitializer {
                 )
             """);
 
-            // ----- Product table -----
+            // ----- Product master table -----
             stmt.execute("""
                 CREATE TABLE IF NOT EXISTS product (
                     id IDENTITY PRIMARY KEY,
-                    name VARCHAR(100),
-                    description VARCHAR(255),
-                    itemId VARCHAR(50),
-                    stock INT,
-                    category VARCHAR(100),
-                    price DECIMAL(10, 2),
-                    photoPath VARCHAR(255),
-                    availability VARCHAR(50)
+                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
                 )
+            """);
+
+            // ----- Product info table -----
+            stmt.execute("""
+                CREATE TABLE IF NOT EXISTS product_info (
+                    id IDENTITY PRIMARY KEY,
+                    product_id INT NOT NULL,
+                    product_name VARCHAR(100) NOT NULL,
+                    sku VARCHAR(100) UNIQUE,
+                    category_id INT,
+                    brand VARCHAR(100),
+                    purchase_unit VARCHAR(50),
+                    selling_unit VARCHAR(50),
+                    supplier VARCHAR(100),
+                    product_group VARCHAR(100),
+                    reorder_level INT,
+                    description TEXT,
+                    FOREIGN KEY (product_id) REFERENCES product(id),
+                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                )
+            """);
+
+            // ----- Product barcodes table -----
+            stmt.execute("""
+                CREATE TABLE IF NOT EXISTS product_barcodes (
+                    id IDENTITY PRIMARY KEY,
+                    product_id INT NOT NULL,
+                    name VARCHAR(100),
+                    barcode VARCHAR(100) UNIQUE,
+                    is_default BOOLEAN DEFAULT false,
+                    is_standard BOOLEAN DEFAULT false,
+                    FOREIGN KEY (product_id) REFERENCES product(id),
+                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                )
+            """);
+
+            // ----- Product attributes table -----
+            stmt.execute("""
+                CREATE TABLE IF NOT EXISTS product_attributes (
+                    id IDENTITY PRIMARY KEY,
+                    product_id INT NOT NULL,
+                    attribute_name VARCHAR(100),
+                    attribute_value VARCHAR(100),  // Column is named "attribute_value"
+                    arabic_value VARCHAR(100),
+                    FOREIGN KEY (product_id) REFERENCES product(id),
+                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                )
+            """);
+
+            // ----- Unit prices table -----
+            stmt.execute("""
+                CREATE TABLE IF NOT EXISTS unit_prices (
+                    id IDENTITY PRIMARY KEY,
+                    product_id INT NOT NULL,
+                    price_type VARCHAR(50),
+                    unit_option VARCHAR(50),
+                    cost DECIMAL(10,2),
+                    price DECIMAL(10,2),
+                    color VARCHAR(50),
+                    FOREIGN KEY (product_id) REFERENCES product(id),
+                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                )
+            """);
+
+            // ----- Product taxes table -----
+            stmt.execute("""
+                CREATE TABLE IF NOT EXISTS product_taxes (
+                    id IDENTITY PRIMARY KEY,
+                    product_id INT NOT NULL,
+                    tax_type VARCHAR(100),
+                    applied_to_selling BOOLEAN DEFAULT false,
+                    applied_to_buying BOOLEAN DEFAULT false,
+                    include_in_price BOOLEAN DEFAULT false,
+                    FOREIGN KEY (product_id) REFERENCES product(id),
+                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                )
+            """);
+
+            // ----- Product images table -----
+            stmt.execute("""
+                CREATE TABLE IF NOT EXISTS product_images (
+                    id IDENTITY PRIMARY KEY,
+                    product_id INT NOT NULL,
+                    image_url TEXT,
+                    FOREIGN KEY (product_id) REFERENCES product(id),
+                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                )
+            """);
+
+            // ----- Category table -----
+            stmt.execute("""
+                CREATE TABLE IF NOT EXISTS category (
+                    id IDENTITY PRIMARY KEY,
+                    name VARCHAR(100) NOT NULL,
+                    description VARCHAR(255),
+                    parent_id INT,
+                    image_url VARCHAR(255),
+                    is_active BOOLEAN DEFAULT true,
+                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                )
+            """);
+
+            // Insert default categories
+            stmt.execute("""
+                MERGE INTO category ( name, description) KEY(name) VALUES 
+                ( 'Pizza', 'Various pizza items'),
+                ( 'Burger', 'Different types of burgers'),
+                ( 'Chicken', 'Chicken based products'),
+                ( 'Bakery', 'Bakery items'),
+                ( 'Beverage', 'Drinks and beverages'),
+                ( 'Seafood', 'Seafood products')
             """);
 
             // ----- Insert default owner -----
@@ -67,7 +171,7 @@ public class DatabaseInitializer {
                             "(1, 'Super Owner', 'owner', '" + ownerHash + "')"
             );
 
-// ----- Insert default admin user -----
+            // ----- Insert default admin user -----
             String adminHash = BCrypt.hashpw("admin123", BCrypt.gensalt());
             stmt.execute(
                     "MERGE INTO users (id, full_name, username, email, password, role, phone_no, salary, " +
@@ -78,7 +182,7 @@ public class DatabaseInitializer {
                             "TIME '09:00:00', TIME '18:00:00', 'Admin Lane', 'Handles system', 'UAE9999')"
             );
 
-// ----- Insert default employee user -----
+            // ----- Insert default employee user -----
             String empHash = BCrypt.hashpw("emp123", BCrypt.gensalt());
             stmt.execute(
                     "MERGE INTO users (id, full_name, username, email, password, role, phone_no, salary, " +
@@ -88,7 +192,8 @@ public class DatabaseInitializer {
                             "'employee', '9876543210', 30000.0, DATE '1995-05-10', FALSE, " +
                             "TIME '10:00:00', TIME '19:00:00', 'Employee St', 'POS operator', 'UAE5678')"
             );
-            System.out.println("✅ Database initialized with default accounts.");
+
+            System.out.println("✅ Database initialized with default accounts and product tables.");
 
         } catch (Exception e) {
             System.err.println("❌ Database initialization failed:");

@@ -1,0 +1,225 @@
+/* Base styles */
+.root {
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
+}
+
+/* Table styles */
+.table-view {
+    -fx-background-color: transparent;
+    -fx-border-color: #333333;
+    -fx-border-width: 1px;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #2a2a2c;
+}
+
+.table-view .column-header {
+    -fx-background-color: transparent;
+    -fx-border-color: #333333;
+    -fx-border-width: 0 0 1 0;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.table-view .table-cell {
+    -fx-text-fill: white;
+    -fx-border-color: transparent;
+    -fx-padding: 8px;
+}
+
+.table-row-cell {
+    -fx-background-color: #2a2a2c;
+    -fx-border-color: #333333;
+    -fx-border-width: 0 0 1 0;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #252527;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #fc5c65;
+    -fx-text-fill: white;
+}
+
+/* Navigation buttons */
+.nav-btn {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 10px 15px;
+}
+
+.nav-btn:hover {
+    -fx-background-color: #3d4142;
+    -fx-cursor: hand;
+}
+
+.nav-btn-selected {
+    -fx-background-color: #fc5c65;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 10px 15px;
+}
+
+/* Action buttons */
+.action-btn {
+    -fx-background-color: #fc5c65;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 8px 15px;
+    -fx-background-radius: 5px;
+}
+
+.action-btn:hover {
+    -fx-background-color: #ff6b6b;
+    -fx-cursor: hand;
+}
+
+/* Category buttons */
+.category-btn {
+    -fx-background-color: #2a2a2c;
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+    -fx-padding: 8px 15px;
+    -fx-background-radius: 20px;
+}
+
+.category-btn:hover {
+    -fx-background-color: #3d4142;
+    -fx-cursor: hand;
+}
+
+.category-btn.selected {
+    -fx-background-color: #fc5c65;
+}
+
+/* Tab buttons */
+.tab-btn {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 8px 15px;
+    -fx-border-color: #fc5c65;
+    -fx-border-width: 0 0 2 0;
+}
+
+.tab-btn:hover {
+    -fx-text-fill: #fc5c65;
+    -fx-cursor: hand;
+}
+
+.tab-btn.selected {
+    -fx-text-fill: #fc5c65;
+    -fx-border-color: #fc5c65;
+}
+
+/* Edit/Delete buttons */
+.edit-btn {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+    -fx-padding: 5px 10px;
+    -fx-background-radius: 3px;
+}
+
+.edit-btn:hover {
+    -fx-background-color: #2980b9;
+    -fx-cursor: hand;
+}
+
+.delete-btn {
+    -fx-background-color: #e74c3c;
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+    -fx-padding: 5px 10px;
+    -fx-background-radius: 3px;
+}
+
+.delete-btn:hover {
+    -fx-background-color: #c0392b;
+    -fx-cursor: hand;
+}
+
+/* Step buttons */
+.step-btn {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 10px 15px;
+    -fx-border-radius: 0;
+    -fx-background-radius: 0;
+    -fx-border-width: 0 0 0 3px;
+    -fx-border-color: transparent;
+}
+
+.step-btn:selected {
+    -fx-background-color: #3d4142;
+    -fx-border-color: #fc5c65;
+    -fx-text-fill: #fc5c65;
+}
+
+.step-btn:hover {
+    -fx-background-color: #3d4142;
+    -fx-cursor: hand;
+}
+
+/* Cancel button */
+.cancel-btn {
+    -fx-background-color: transparent;
+    -fx-text-fill: #e74c3c;
+    -fx-border-color: #e74c3c;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-padding: 8px 15px;
+}
+
+.cancel-btn:hover {
+    -fx-background-color: rgba(231, 76, 60, 0.1);
+    -fx-cursor: hand;
+}
+
+/* Form elements */
+.text-field, .text-area, .combo-box, .spinner {
+    -fx-background-color: #2a2a2c;
+    -fx-text-fill: white;
+    -fx-border-color: #3d4142;
+    -fx-border-radius: 3px;
+    -fx-background-radius: 3px;
+}
+
+.list-view {
+    -fx-background-color: #2a2a2c;
+    -fx-border-color: #3d4142;
+}
+
+.list-cell {
+    -fx-background-color: #2a2a2c;
+    -fx-text-fill: white;
+}
+
+.list-cell:filled:selected {
+    -fx-background-color: #fc5c65;
+}
+
+.check-box {
+    -fx-text-fill: white;
+}
+
+.check-box .box {
+    -fx-background-color: #2a2a2c;
+    -fx-border-color: #3d4142;
+}
+
+.check-box:selected .mark {
+    -fx-background-color: #fc5c65;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: white;
+}

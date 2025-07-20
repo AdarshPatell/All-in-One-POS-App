@@ -3,50 +3,51 @@ package org.example.newchronopos.model;
 import javafx.beans.property.*;
 import javafx.scene.image.ImageView;
 
-public class ProductView {
-    private final ObjectProperty<ImageView> photo;
-    private final StringProperty productName;
-    private final StringProperty description;
-    private final StringProperty itemId;
-    private final IntegerProperty stock;
-    private final StringProperty category;
-    private final DoubleProperty price;
-    private final StringProperty availability;
+import javafx.beans.property.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
-    public ProductView(ImageView photo, String productName, String description, String itemId, int stock, String category, double price, String availability) {
-        this.photo = new SimpleObjectProperty<>(photo);
+public class ProductView {
+    private final IntegerProperty id;
+    private final ObjectProperty<ImageView> image;
+    private final StringProperty productName;
+    private final StringProperty sku;
+    private final StringProperty category;
+    private final StringProperty brand;
+    private final StringProperty price;
+    private final StringProperty stock;
+    private final StringProperty status;
+
+    public ProductView(int id, ImageView image, String productName, String sku,
+                       String category, String brand, String price, String stock, String status) {
+        this.id = new SimpleIntegerProperty(id);
+        this.image = new SimpleObjectProperty<>(image);
         this.productName = new SimpleStringProperty(productName);
-        this.description = new SimpleStringProperty(description);
-        this.itemId = new SimpleStringProperty(itemId);
-        this.stock = new SimpleIntegerProperty(stock);
+        this.sku = new SimpleStringProperty(sku);
         this.category = new SimpleStringProperty(category);
-        this.price = new SimpleDoubleProperty(price);
-        this.availability = new SimpleStringProperty(availability);
+        this.brand = new SimpleStringProperty(brand);
+        this.price = new SimpleStringProperty(price);
+        this.stock = new SimpleStringProperty(stock);
+        this.status = new SimpleStringProperty(status);
     }
 
-    // --- Getters and Property Getters ---
-
-    public ImageView getPhoto() { return photo.get(); }
-    public ObjectProperty<ImageView> photoProperty() { return photo; }
-
+    // Getters
+    public int getId() { return id.get(); }
+    public IntegerProperty idProperty() { return id; }
+    public ImageView getImage() { return image.get(); }
+    public ObjectProperty<ImageView> imageProperty() { return image; }
     public String getProductName() { return productName.get(); }
     public StringProperty productNameProperty() { return productName; }
-
-    public String getDescription() { return description.get(); }
-    public StringProperty descriptionProperty() { return description; }
-
-    public String getItemId() { return itemId.get(); }
-    public StringProperty itemIdProperty() { return itemId; }
-
-    public int getStock() { return stock.get(); }
-    public IntegerProperty stockProperty() { return stock; }
-
+    public String getSku() { return sku.get(); }
+    public StringProperty skuProperty() { return sku; }
     public String getCategory() { return category.get(); }
     public StringProperty categoryProperty() { return category; }
-
-    public double getPrice() { return price.get(); }
-    public DoubleProperty priceProperty() { return price; }
-
-    public String getAvailability() { return availability.get(); }
-    public StringProperty availabilityProperty() { return availability; }
+    public String getBrand() { return brand.get(); }
+    public StringProperty brandProperty() { return brand; }
+    public String getPrice() { return price.get(); }
+    public StringProperty priceProperty() { return price; }
+    public String getStock() { return stock.get(); }
+    public StringProperty stockProperty() { return stock; }
+    public String getStatus() { return status.get(); }
+    public StringProperty statusProperty() { return status; }
 }

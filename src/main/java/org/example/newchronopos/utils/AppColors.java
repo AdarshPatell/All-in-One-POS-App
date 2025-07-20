@@ -18,7 +18,6 @@ public class AppColors {
     public static final Color BLACK_ALT  = Color.web("#111315");//for dark mode background main bg
     public static final Color LIGHT_GRAY = Color.web("#D9D9D9");
 
-    //light mode colors
     public static final Color LIGHT_GREEN = Color.web("#37D101");  // vibrant accent
     public static final Color CREAMISH    = Color.web("#E3FFE4");  // soft highlight
     public static final Color SUNSET_OR   = Color.web("#FF8671");  // warm gradient
