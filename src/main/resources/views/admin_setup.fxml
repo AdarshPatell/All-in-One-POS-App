@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.newchronopos.controller.AdminSetupController">
+   <top>
+      <VBox style="-fx-background-color: #2c3e50; -fx-padding: 20;">
+         <Label text="ChronoPos Admin Setup" style="-fx-text-fill: white; -fx-font-size: 24px; -fx-font-weight: bold;" />
+         <Label text="Create your administrator account to complete the setup" style="-fx-text-fill: #bdc3c7; -fx-font-size: 14px;" />
+      </VBox>
+   </top>
+
+   <center>
+      <ScrollPane fitToWidth="true" fitToHeight="true" style="-fx-background-color: #f5f5f5;">
+         <VBox alignment="CENTER" spacing="30.0" style="-fx-padding: 50; -fx-background-color: #f5f5f5;">
+
+            <!-- Success Message -->
+            <VBox alignment="CENTER" spacing="15.0" style="-fx-background-color: #d4edda; -fx-padding: 20; -fx-background-radius: 10; -fx-border-color: #c3e6cb; -fx-border-radius: 10; -fx-max-width: 500;">
+               <Label text="🎉 License Activated Successfully!" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #155724;" />
+               <Label text="Your ChronoPos system is now licensed and ready to use." style="-fx-font-size: 14px; -fx-text-fill: #155724; -fx-text-alignment: center;" wrapText="true" />
+            </VBox>
+
+            <!-- Admin Setup Form -->
+            <VBox alignment="CENTER" spacing="20.0" style="-fx-background-color: white; -fx-padding: 40; -fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2); -fx-max-width: 500;">
+               <Label text="Create Administrator Account" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
+               <Label text="Set up your admin credentials to manage your POS system" style="-fx-font-size: 14px; -fx-text-fill: #7f8c8d; -fx-text-alignment: center;" wrapText="true" />
+
+               <!-- Admin Form Fields -->
+               <VBox spacing="20.0" alignment="CENTER" style="-fx-max-width: 400;">
+
+                  <!-- Full Name Field -->
+                  <VBox spacing="8.0" alignment="CENTER_LEFT">
+                     <Label text="Full Name *" style="-fx-font-weight: bold; -fx-font-size: 14px; -fx-text-fill: #2c3e50;" />
+                     <TextField fx:id="fullNameField" promptText="Enter your full name"
+                               style="-fx-font-size: 14px; -fx-padding: 12; -fx-border-color: #3498db; -fx-border-radius: 5; -fx-background-radius: 5;" prefWidth="380.0" />
+                  </VBox>
+
+                  <!-- Username Field -->
+                  <VBox spacing="8.0" alignment="CENTER_LEFT">
+                     <Label text="Username *" style="-fx-font-weight: bold; -fx-font-size: 14px; -fx-text-fill: #2c3e50;" />
+                     <TextField fx:id="usernameField" promptText="Choose a username for login"
+                               style="-fx-font-size: 14px; -fx-padding: 12; -fx-border-color: #3498db; -fx-border-radius: 5; -fx-background-radius: 5;" prefWidth="380.0" />
+                  </VBox>
+
+                  <!-- Email Field -->
+                  <VBox spacing="8.0" alignment="CENTER_LEFT">
+                     <Label text="Email Address *" style="-fx-font-weight: bold; -fx-font-size: 14px; -fx-text-fill: #2c3e50;" />
+                     <TextField fx:id="emailField" promptText="Enter your email address"
+                               style="-fx-font-size: 14px; -fx-padding: 12; -fx-border-color: #3498db; -fx-border-radius: 5; -fx-background-radius: 5;" prefWidth="380.0" />
+                  </VBox>
+
+                  <!-- Password Field -->
+                  <VBox spacing="8.0" alignment="CENTER_LEFT">
+                     <Label text="Password *" style="-fx-font-weight: bold; -fx-font-size: 14px; -fx-text-fill: #2c3e50;" />
+                     <PasswordField fx:id="passwordField" promptText="Create a strong password"
+                                   style="-fx-font-size: 14px; -fx-padding: 12; -fx-border-color: #3498db; -fx-border-radius: 5; -fx-background-radius: 5;" prefWidth="380.0" />
+                  </VBox>
+
+                  <!-- Confirm Password Field -->
+                  <VBox spacing="8.0" alignment="CENTER_LEFT">
+                     <Label text="Confirm Password *" style="-fx-font-weight: bold; -fx-font-size: 14px; -fx-text-fill: #2c3e50;" />
+                     <PasswordField fx:id="confirmPasswordField" promptText="Re-enter your password"
+                                   style="-fx-font-size: 14px; -fx-padding: 12; -fx-border-color: #3498db; -fx-border-radius: 5; -fx-background-radius: 5;" prefWidth="380.0" />
+                  </VBox>
+
+                  <!-- Password Requirements -->
+                  <VBox spacing="5.0" alignment="CENTER_LEFT" style="-fx-background-color: #f8f9fa; -fx-padding: 15; -fx-background-radius: 5;">
+                     <Label text="Password Requirements:" style="-fx-font-weight: bold; -fx-font-size: 12px; -fx-text-fill: #495057;" />
+                     <Label text="• At least 8 characters long" style="-fx-font-size: 11px; -fx-text-fill: #6c757d;" />
+                     <Label text="• Contains uppercase and lowercase letters" style="-fx-font-size: 11px; -fx-text-fill: #6c757d;" />
+                     <Label text="• Contains at least one number" style="-fx-font-size: 11px; -fx-text-fill: #6c757d;" />
+                  </VBox>
+
+                  <!-- Required Fields Note -->
+                  <Label text="* All fields are required" style="-fx-font-size: 12px; -fx-text-fill: #e74c3c; -fx-font-style: italic;" />
+               </VBox>
+
+               <!-- Action Buttons -->
+               <VBox spacing="15.0" alignment="CENTER">
+                  <Button fx:id="createAdminBtn" text="🚀 Create Admin Account" onAction="#createAdminAccount"
+                         style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-padding: 15 30;" />
+
+                  <Button fx:id="skipSetupBtn" text="Skip for now (Use default login)" onAction="#skipAdminSetup"
+                         style="-fx-background-color: #95a5a6; -fx-text-fill: white; -fx-font-size: 12px; -fx-padding: 8 16;" />
+               </VBox>
+
+               <Label fx:id="setupStatus" style="-fx-font-size: 14px;" />
+            </VBox>
+
+            <!-- License Information -->
+            <VBox alignment="CENTER" spacing="10.0" style="-fx-background-color: #e3f2fd; -fx-padding: 20; -fx-background-radius: 10; -fx-max-width: 500;">
+               <Label text="📋 License Information" style="-fx-font-weight: bold; -fx-font-size: 14px; -fx-text-fill: #1565c0;" />
+               <Label fx:id="licenseInfoLabel" text="License activated for: [Business Name]" style="-fx-font-size: 12px; -fx-text-fill: #1976d2;" />
+               <Label fx:id="licenseExpiryLabel" text="License expires: [Date]" style="-fx-font-size: 12px; -fx-text-fill: #1976d2;" />
+            </VBox>
+
+         </VBox>
+      </ScrollPane>
+   </center>
+
+</BorderPane>

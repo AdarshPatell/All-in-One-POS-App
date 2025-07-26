@@ -100,7 +100,18 @@
             <artifactId>h2</artifactId>
             <version>2.2.224</version> <!-- or latest -->
         </dependency>
-
+        <!-- JSON processing -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.15.2</version>
+        </dependency>
+        <!-- Jackson JSR310 module for Java 8 time support -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+            <version>2.15.2</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -123,7 +134,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>org.example.newchronopos/org.example.newchronopos.HelloApplication</mainClass>
+                            <mainClass>org.example.newchronopos.MainApplication</mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
                             <jlinkImageName>app</jlinkImageName>
@@ -133,6 +144,40 @@
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+
+            <!-- JLink Plugin for creating custom runtime images -->
+            <plugin>
+                <groupId>org.openjfx</groupId>
+                <artifactId>javafx-maven-plugin</artifactId>
+                <version>0.0.8</version>
+                <configuration>
+                    <mainClass>org.example.newchronopos.MainApplication</mainClass>
+                    <commandlineArgs></commandlineArgs>
+                </configuration>
+            </plugin>
+            <!-- JPackage Plugin for creating native installers -->
+            <plugin>
+                <groupId>org.panteleyev</groupId>
+                <artifactId>jpackage-maven-plugin</artifactId>
+                <version>1.6.5</version>
+                <configuration>
+                    <name>ChronoPos</name>
+                    <appVersion>1.0.0</appVersion>
+                    <vendor>ChronoPos Systems</vendor>
+                    <destination>target/dist</destination>
+                    <module>org.example.newchronopos/org.example.newchronopos.MainApplication</module>
+                    <runtimeImage>target/app</runtimeImage>
+                    <javaOptions>
+                        <option>-Dfile.encoding=UTF-8</option>
+                    </javaOptions>
+                    <winMenu>true</winMenu>
+                    <winDirChooser>true</winDirChooser>
+                    <winShortcut>true</winShortcut>
+                    <winPerUserInstall>false</winPerUserInstall>
+                    <macPackageName>ChronoPos</macPackageName>
+                    <macPackageIdentifier>com.chronopos.app</macPackageIdentifier>
+                </configuration>
             </plugin>
         </plugins>
     </build>
