@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.newchronopos.controller.LicenseActivationController">
+   <top>
+      <VBox style="-fx-background-color: #2c3e50; -fx-padding: 20;">
+         <Label text="ChronoPos License Activation" style="-fx-text-fill: white; -fx-font-size: 24px; -fx-font-weight: bold;" />
+         <Label text="Follow the steps below to activate your Point of Sale system" style="-fx-text-fill: #bdc3c7; -fx-font-size: 14px;" />
+
+         <!-- Progress Indicator -->
+         <HBox spacing="20.0" alignment="CENTER" style="-fx-padding: 20 0 0 0;">
+            <VBox alignment="CENTER" spacing="5.0">
+               <Label fx:id="step1Indicator" text="1" style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-background-radius: 15; -fx-min-width: 30; -fx-min-height: 30; -fx-alignment: center; -fx-font-weight: bold;" />
+               <Label text="Verify" style="-fx-text-fill: #bdc3c7; -fx-font-size: 12px;" />
+            </VBox>
+            <Separator prefWidth="50.0" orientation="HORIZONTAL" style="-fx-background-color: #bdc3c7;" />
+            <VBox alignment="CENTER" spacing="5.0">
+               <Label fx:id="step2Indicator" text="2" style="-fx-background-color: #7f8c8d; -fx-text-fill: white; -fx-background-radius: 15; -fx-min-width: 30; -fx-min-height: 30; -fx-alignment: center; -fx-font-weight: bold;" />
+               <Label text="Details" style="-fx-text-fill: #bdc3c7; -fx-font-size: 12px;" />
+            </VBox>
+            <Separator prefWidth="50.0" orientation="HORIZONTAL" style="-fx-background-color: #bdc3c7;" />
+            <VBox alignment="CENTER" spacing="5.0">
+               <Label fx:id="step3Indicator" text="3" style="-fx-background-color: #7f8c8d; -fx-text-fill: white; -fx-background-radius: 15; -fx-min-width: 30; -fx-min-height: 30; -fx-alignment: center; -fx-font-weight: bold;" />
+               <Label text="Generate" style="-fx-text-fill: #bdc3c7; -fx-font-size: 12px;" />
+            </VBox>
+            <Separator prefWidth="50.0" orientation="HORIZONTAL" style="-fx-background-color: #bdc3c7;" />
+            <VBox alignment="CENTER" spacing="5.0">
+               <Label fx:id="step4Indicator" text="4" style="-fx-background-color: #7f8c8d; -fx-text-fill: white; -fx-background-radius: 15; -fx-min-width: 30; -fx-min-height: 30; -fx-alignment: center; -fx-font-weight: bold;" />
+               <Label text="Activate" style="-fx-text-fill: #bdc3c7; -fx-font-size: 12px;" />
+            </VBox>
+         </HBox>
+      </VBox>
+   </top>
+
+   <center>
+      <ScrollPane fitToWidth="true" fitToHeight="true" style="-fx-background-color: #f5f5f5;">
+         <StackPane style="-fx-background-color: #f5f5f5; -fx-min-height: 600;">
+
+            <!-- Step 1: Scratch Card Verification -->
+            <VBox fx:id="step1" alignment="CENTER" spacing="30.0" style="-fx-padding: 30;">
+               <VBox alignment="CENTER" spacing="20.0" style="-fx-background-color: white; -fx-padding: 30; -fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2); -fx-max-width: 600;">
+                  <Label text="Sales Person Verification" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
+                  <Label text="Enter the scratch card code and embedded password provided by your sales person" style="-fx-font-size: 14px; -fx-text-fill: #7f8c8d; -fx-text-alignment: center;" wrapText="true" />
+
+                  <VBox spacing="15.0" alignment="CENTER" style="-fx-max-width: 400;">
+                     <VBox spacing="8.0" alignment="CENTER_LEFT">
+                        <Label text="Scratch Code:" style="-fx-font-weight: bold; -fx-font-size: 14px;" />
+                        <TextField fx:id="scratchCodeField" promptText="Enter 12-character scratch code" prefWidth="350.0" style="-fx-font-size: 14px; -fx-padding: 10;" />
+                     </VBox>
+
+                     <VBox spacing="8.0" alignment="CENTER_LEFT">
+                        <Label text="Embedded Password:" style="-fx-font-weight: bold; -fx-font-size: 14px;" />
+                        <TextArea fx:id="embeddedPasswordField" promptText="Enter the embedded password from scratch card" prefWidth="350.0" prefHeight="80.0" wrapText="true" style="-fx-font-size: 12px;" />
+                     </VBox>
+
+                     <Button fx:id="verifyScratchBtn" text="Verify Scratch Card" onAction="#verifyScratchCard"
+                            style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-padding: 12 24;" />
+                  </VBox>
+
+                  <Label fx:id="step1Status" style="-fx-font-size: 14px;" />
+               </VBox>
+            </VBox>
+
+            <!-- Step 2: Customer Information -->
+            <VBox fx:id="step2" alignment="CENTER" spacing="30.0" style="-fx-padding: 30;" visible="false">
+               <VBox alignment="CENTER" spacing="20.0" style="-fx-background-color: white; -fx-padding: 30; -fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2); -fx-max-width: 600;">
+                  <Label text="Business Information" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
+                  <Label text="Please provide your business details for license registration" style="-fx-font-size: 14px; -fx-text-fill: #7f8c8d;" />
+
+                  <!-- Customer Information Form with Clear Labels -->
+                  <VBox spacing="15.0" alignment="CENTER" style="-fx-max-width: 500;">
+
+                     <!-- Business Name Field -->
+                     <VBox spacing="5.0" alignment="CENTER_LEFT">
+                        <Label text="Business Name *" style="-fx-font-weight: bold; -fx-font-size: 14px; -fx-text-fill: #2c3e50;" />
+                        <TextField fx:id="customerNameField" promptText="Enter your business/company name"
+                                  style="-fx-font-size: 14px; -fx-padding: 10; -fx-border-color: #3498db; -fx-border-radius: 5; -fx-background-radius: 5;" prefWidth="450.0" />
+                     </VBox>
+
+                     <!-- Email Field -->
+                     <VBox spacing="5.0" alignment="CENTER_LEFT">
+                        <Label text="Email Address *" style="-fx-font-weight: bold; -fx-font-size: 14px; -fx-text-fill: #2c3e50;" />
+                        <TextField fx:id="customerEmailField" promptText="Enter business email address (e.g., business@company.com)"
+                                  style="-fx-font-size: 14px; -fx-padding: 10; -fx-border-color: #3498db; -fx-border-radius: 5; -fx-background-radius: 5;" prefWidth="450.0" />
+                     </VBox>
+
+                     <!-- Phone Field -->
+                     <VBox spacing="5.0" alignment="CENTER_LEFT">
+                        <Label text="Phone Number *" style="-fx-font-weight: bold; -fx-font-size: 14px; -fx-text-fill: #2c3e50;" />
+                        <TextField fx:id="customerPhoneField" promptText="Enter contact phone number (e.g., +1-234-567-8900)"
+                                  style="-fx-font-size: 14px; -fx-padding: 10; -fx-border-color: #3498db; -fx-border-radius: 5; -fx-background-radius: 5;" prefWidth="450.0" />
+                     </VBox>
+
+                     <!-- Address Field -->
+                     <VBox spacing="5.0" alignment="CENTER_LEFT">
+                        <Label text="Business Address *" style="-fx-font-weight: bold; -fx-font-size: 14px; -fx-text-fill: #2c3e50;" />
+                        <TextArea fx:id="customerAddressField" promptText="Enter complete business address including street, city, state, and zip code"
+                                 prefHeight="80.0" wrapText="true" prefWidth="450.0"
+                                 style="-fx-font-size: 14px; -fx-padding: 10; -fx-border-color: #3498db; -fx-border-radius: 5; -fx-background-radius: 5;" />
+                     </VBox>
+
+                     <!-- Required Fields Note -->
+                     <Label text="* All fields are required" style="-fx-font-size: 12px; -fx-text-fill: #e74c3c; -fx-font-style: italic;" />
+                  </VBox>
+
+                  <HBox spacing="15.0" alignment="CENTER">
+                     <Button fx:id="backToStep1Btn" text="← Back" onAction="#goToStep1"
+                            style="-fx-background-color: #95a5a6; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10 20;" />
+                     <Button fx:id="generateKeyBtn" text="Generate Sales Key →" onAction="#generateSalesPersonKey"
+                            style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-padding: 12 24;" />
+                  </HBox>
+
+                  <Label fx:id="step2Status" style="-fx-font-size: 14px;" />
+               </VBox>
+            </VBox>
+
+            <!-- Step 3: Sales Person Key Display -->
+            <VBox fx:id="step3" alignment="CENTER" spacing="30.0" style="-fx-padding: 30;" visible="false">
+               <VBox alignment="CENTER" spacing="20.0" style="-fx-background-color: white; -fx-padding: 30; -fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2); -fx-max-width: 700;">
+                  <Label text="Sales Person Key Generated" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #27ae60;" />
+                  <Label text="Copy this key and send it to your admin for license generation" style="-fx-font-size: 14px; -fx-text-fill: #7f8c8d;" />
+
+                  <VBox spacing="15.0" alignment="CENTER" style="-fx-max-width: 650;">
+                     <Label text="Sales Person Key:" style="-fx-font-weight: bold; -fx-font-size: 16px;" />
+                     <TextArea fx:id="salesPersonKeyArea" prefWidth="600.0" prefHeight="100.0" editable="false" wrapText="true"
+                              style="-fx-font-family: 'Courier New'; -fx-font-size: 11px; -fx-background-color: #f8f9fa; -fx-border-color: #dee2e6; -fx-border-radius: 5;" />
+
+                     <HBox spacing="15.0" alignment="CENTER">
+                        <Button fx:id="copySalesKeyBtn" text="📋 Copy to Clipboard" onAction="#copySalesPersonKey"
+                               style="-fx-background-color: #f39c12; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10 20;" />
+                        <Button fx:id="saveKeyBtn" text="💾 Save to File" onAction="#saveKeyToFile"
+                               style="-fx-background-color: #9b59b6; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10 20;" />
+                     </HBox>
+                  </VBox>
+
+                  <VBox spacing="8.0" alignment="CENTER" style="-fx-background-color: #e8f5e8; -fx-padding: 15; -fx-background-radius: 10; -fx-max-width: 600;">
+                     <Label text="📧 Next Steps:" style="-fx-font-weight: bold; -fx-font-size: 14px; -fx-text-fill: #27ae60;" />
+                     <Label text="1. Copy or save the sales person key above" style="-fx-text-fill: #2c3e50; -fx-font-size: 12px;" />
+                     <Label text="2. Send this key to your admin via email, WhatsApp, or any messaging platform" style="-fx-text-fill: #2c3e50; -fx-font-size: 12px;" />
+                     <Label text="3. Wait for admin to process and send back the license key" style="-fx-text-fill: #2c3e50; -fx-font-size: 12px;" />
+                     <Label text="4. Once you receive the license key, click 'Next' to proceed" style="-fx-text-fill: #2c3e50; -fx-font-size: 12px;" />
+                  </VBox>
+
+                  <HBox spacing="15.0" alignment="CENTER">
+                     <Button fx:id="backToStep2Btn" text="← Back" onAction="#goToStep2"
+                            style="-fx-background-color: #95a5a6; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10 20;" />
+                     <Button fx:id="proceedToLicenseBtn" text="I Have License Key →" onAction="#proceedToLicenseActivation"
+                            style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-padding: 12 24;" />
+                  </HBox>
+               </VBox>
+            </VBox>
+
+            <!-- Step 4: License Activation -->
+            <VBox fx:id="step4" alignment="CENTER" spacing="30.0" style="-fx-padding: 30;" visible="false">
+               <VBox alignment="CENTER" spacing="20.0" style="-fx-background-color: white; -fx-padding: 30; -fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2); -fx-max-width: 700;">
+                  <Label text="License Activation" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
+                  <Label text="Enter the license key provided by your admin to activate the system" style="-fx-font-size: 14px; -fx-text-fill: #7f8c8d;" />
+
+                  <VBox spacing="15.0" alignment="CENTER" style="-fx-max-width: 650;">
+                     <Label text="License Key:" style="-fx-font-weight: bold; -fx-font-size: 16px;" />
+                     <TextArea fx:id="licenseKeyField" promptText="Paste the license key from admin here..." prefWidth="600.0" prefHeight="100.0" wrapText="true"
+                              style="-fx-font-family: 'Courier New'; -fx-font-size: 11px; -fx-border-color: #3498db; -fx-border-radius: 5;" />
+
+                     <Button fx:id="activateLicenseBtn" text="🚀 Activate License" onAction="#activateLicense"
+                            style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold; -fx-padding: 15 30;" />
+                  </VBox>
+
+                  <HBox spacing="15.0" alignment="CENTER">
+                     <Button fx:id="backToStep3Btn" text="← Back" onAction="#goToStep3"
+                            style="-fx-background-color: #95a5a6; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10 20;" />
+                  </HBox>
+
+                  <Label fx:id="step4Status" style="-fx-font-size: 14px;" />
+               </VBox>
+            </VBox>
+
+         </StackPane>
+      </ScrollPane>
+   </center>
+
+</BorderPane>

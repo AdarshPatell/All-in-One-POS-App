@@ -193,6 +193,10 @@ public class DatabaseInitializer {
                             "TIME '10:00:00', TIME '19:00:00', 'Employee St', 'POS operator', 'UAE5678')"
             );
 
+            // ----- Reset auto-increment sequence for users table -----
+            // This ensures that new users will get IDs starting from 3
+            stmt.execute("ALTER TABLE users ALTER COLUMN id RESTART WITH 3");
+
             System.out.println("✅ Database initialized with default accounts and product tables.");
 
         } catch (Exception e) {

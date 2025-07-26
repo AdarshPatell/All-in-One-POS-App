@@ -1,0 +1,5 @@
+// This file has been renamed to disable the module system
+// Original module-info.java content moved here to prevent compilation errors
+// The presence of module-info.java was causing syntax errors
+// Now the application will use classpath instead of module path
+
