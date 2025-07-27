@@ -156,6 +156,19 @@
                     <commandlineArgs></commandlineArgs>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.3.0</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>org.example.newchronopos.MainApplication</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
             <!-- JPackage Plugin for creating native installers -->
             <plugin>
                 <groupId>org.panteleyev</groupId>
