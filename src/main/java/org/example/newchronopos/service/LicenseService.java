@@ -4,6 +4,7 @@ import org.example.newchronopos.model.License;
 
 import java.io.*;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.Map;
@@ -14,14 +15,47 @@ public class LicenseService {
     private static final String LICENSE_FILE = "system.license";
     private static final String SYSTEM_CONFIG_FILE = "system.config";
 
+    // Get the application data directory
+    private static Path getAppDataDirectory() {
+        String userHome = System.getProperty("user.home");
+        String appDataDir = System.getProperty("os.name").toLowerCase().contains("windows")
+            ? System.getenv("APPDATA") + File.separator + "ChronoPos"
+            : userHome + File.separator + ".chronopos";
+
+        Path appDir = Paths.get(appDataDir);
+        try {
+            Files.createDirectories(appDir);
+        } catch (Exception e) {
+            // Fall back to user home directory if APPDATA fails
+            appDir = Paths.get(userHome, ".chronopos");
+            try {
+                Files.createDirectories(appDir);
+            } catch (Exception ex) {
+                // Final fallback to current directory
+                appDir = Paths.get(".");
+            }
+        }
+        return appDir;
+    }
+
+    // Get full path for license file
+    private static Path getLicenseFilePath() {
+        return getAppDataDirectory().resolve(LICENSE_FILE);
+    }
+
+    // Get full path for config file
+    private static Path getConfigFilePath() {
+        return getAppDataDirectory().resolve(SYSTEM_CONFIG_FILE);
+    }
+
     public static boolean isSystemLicensed() {
         try {
-            File licenseFile = new File(LICENSE_FILE);
-            if (!licenseFile.exists()) {
+            Path licenseFilePath = getLicenseFilePath();
+            if (!Files.exists(licenseFilePath)) {
                 return false;
             }
 
-            String licenseContent = Files.readString(Paths.get(LICENSE_FILE));
+            String licenseContent = Files.readString(licenseFilePath);
             License license = CryptographicService.decryptData(licenseContent, License.class);
 
             // Check if license is still valid
@@ -125,7 +159,7 @@ public class LicenseService {
 
             // Save license to file
             String encryptedLicense = CryptographicService.encryptData(license);
-            Files.writeString(Paths.get(LICENSE_FILE), encryptedLicense);
+            Files.writeString(getLicenseFilePath(), encryptedLicense);
 
             // Save system configuration
             saveSystemConfig(license);
@@ -147,7 +181,7 @@ public class LicenseService {
         config.put("systemFingerprint", license.getSystemFingerprint());
 
         String encryptedConfig = CryptographicService.encryptData(config);
-        Files.writeString(Paths.get(SYSTEM_CONFIG_FILE), encryptedConfig);
+        Files.writeString(getConfigFilePath(), encryptedConfig);
     }
 
     public static License getCurrentLicense() {
@@ -156,7 +190,7 @@ public class LicenseService {
                 return null;
             }
 
-            String licenseContent = Files.readString(Paths.get(LICENSE_FILE));
+            String licenseContent = Files.readString(getLicenseFilePath());
             return CryptographicService.decryptData(licenseContent, License.class);
 
         } catch (Exception e) {

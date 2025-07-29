@@ -40,7 +40,7 @@ jpackage --type app-image ^
          --description "Point of Sale System with Licensing" ^
          --copyright "Copyright 2025 ChronoPos Systems" ^
          --input target ^
-         --main-jar "NewChronoPos-1.0-SNAPSHOT.jar" ^
+         --main-jar "ChronoPos.jar" ^
          --main-class org.example.newchronopos.MainApplication ^
          --runtime-image target/runtime ^
          --dest target/dist ^
