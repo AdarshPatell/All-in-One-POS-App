@@ -26,14 +26,14 @@
                         </VBox.margin>
                     </Label>
 
-                    <Button text="Dashboard" styleClass="nav-btn" prefWidth="170"/>
-                    <Button text="Transactions" styleClass="nav-btn"/>
-                    <Button text="Products" styleClass="nav-btn-selected"/>
-                    <Button text="Reports" styleClass="nav-btn"/>
-                    <Button text="Settings" styleClass="nav-btn"/>
+                    <Button text="Dashboard" styleClass="nav-btn" prefWidth="170" onAction="#navigateToDashboard"/>
+                    <Button text="Transactions" styleClass="nav-btn" onAction="#navigateToTransactions"/>
+                    <Button text="Products" styleClass="nav-btn-selected" onAction="#navigateToProducts"/>
+                    <Button text="Reports" styleClass="nav-btn" onAction="#navigateToReports"/>
+                    <Button text="Settings" styleClass="nav-btn" onAction="#navigateToSettings"/>
 
                     <VBox fx:id="logoutSection" alignment="BOTTOM_LEFT" spacing="10.0" VBox.vgrow="ALWAYS">
-                        <Button text="Logout" styleClass="nav-btn" />
+                        <Button text="Logout" styleClass="nav-btn" onAction="#handleLogout" />
                     </VBox>
                 </children>
             </VBox>

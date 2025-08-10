@@ -1,6 +1,8 @@
 package org.example.newchronopos.db;
 
 import org.example.newchronopos.config.DatabaseConfig;
+import org.example.newchronopos.service.settings.SettingsService;
+import org.example.newchronopos.service.settings.SettingsServiceImpl;
 import org.mindrot.jbcrypt.BCrypt;
 
 import java.sql.Connection;
@@ -199,8 +201,28 @@ public class DatabaseInitializer {
 
             System.out.println("✅ Database initialized with default accounts and product tables.");
 
+            // Initialize settings system
+            initializeSettingsSystem();
+
         } catch (Exception e) {
             System.err.println("❌ Database initialization failed:");
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Initialize the settings system with default values
+     */
+    private static void initializeSettingsSystem() {
+        try {
+            System.out.println("🔧 Initializing settings system...");
+            
+            SettingsService settingsService = new SettingsServiceImpl();
+            settingsService.initializeDefaultSettings();
+            
+            System.out.println("✅ Settings system initialized with default values.");
+        } catch (Exception e) {
+            System.err.println("❌ Settings system initialization failed:");
             e.printStackTrace();
         }
     }

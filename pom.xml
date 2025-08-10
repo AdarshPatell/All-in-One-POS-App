@@ -226,6 +226,17 @@
                 </executions>
             </plugin>
 
+            <!-- Exec plugin for running test classes -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.5.1</version>
+                <configuration>
+                    <mainClass>org.example.newchronopos.test.SettingsSystemTest</mainClass>
+                    <classpathScope>compile</classpathScope>
+                </configuration>
+            </plugin>
+
 
         </plugins>
     </build>
