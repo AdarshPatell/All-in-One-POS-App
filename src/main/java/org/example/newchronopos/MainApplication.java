@@ -14,22 +14,32 @@ public class MainApplication extends Application {
     public void start(Stage stage) throws IOException {
         DatabaseInitializer.initialize();   // creates schema + default users
 
-        // Check if system is licensed
-        if (!LicenseService.isSystemLicensed()) {
-            // Show license activation screen
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/license_activation.fxml"));
-            Scene scene = new Scene(loader.load());
-
-            var css = getClass().getResource("/css/style.css");
-            if (css != null) scene.getStylesheets().add(css.toExternalForm());
-
-            stage.setTitle("ChronoPos - License Activation");
-            stage.setScene(scene);
-            stage.setMaximized(true);
-            stage.show();
-        } else {
-            // Show normal login screen
+        // Check if running in development mode
+        String environment = System.getenv("ENVIRONMENT");
+        boolean isDevelopmentMode = "dev".equalsIgnoreCase(environment);
+        
+        if (isDevelopmentMode) {
+            System.out.println("🚀 Running in development mode - License check bypassed");
+            // Show login screen directly in development mode
             showLoginScreen(stage);
+        } else {
+            // Check if system is licensed (production mode)
+            if (!LicenseService.isSystemLicensed()) {
+                // Show license activation screen
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/license_activation.fxml"));
+                Scene scene = new Scene(loader.load());
+
+                var css = getClass().getResource("/css/style.css");
+                if (css != null) scene.getStylesheets().add(css.toExternalForm());
+
+                stage.setTitle("ChronoPos - License Activation");
+                stage.setScene(scene);
+                stage.setMaximized(true);
+                stage.show();
+            } else {
+                // Show normal login screen
+                showLoginScreen(stage);
+            }
         }
     }
 

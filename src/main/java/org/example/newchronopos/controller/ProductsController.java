@@ -4,8 +4,10 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
@@ -1254,5 +1256,102 @@ public class ProductsController implements Initializable {
         attributeNameField.clear();
         attributeValueField.clear();
         arabicValueField.clear();
+    }
+
+    // Navigation Methods
+    @FXML
+    private void navigateToDashboard() {
+        // TODO: Navigate to dashboard
+        showAlert("Navigation", "Dashboard feature coming soon!");
+    }
+
+    @FXML
+    private void navigateToTransactions() {
+        // TODO: Navigate to transactions
+        showAlert("Navigation", "Transactions feature coming soon!");
+    }
+
+    @FXML
+    private void navigateToProducts() {
+        // Already on products page
+        showAlert("Navigation", "You are already on the Products page!");
+    }
+
+    @FXML
+    private void navigateToReports() {
+        try {
+            Stage stage = (Stage) productTable.getScene().getWindow();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/reports.fxml"));
+            Scene scene = new Scene(loader.load());
+            
+            // Copy window properties
+            boolean wasMaximized = stage.isMaximized();
+            double width = stage.getWidth();
+            double height = stage.getHeight();
+            
+            stage.setScene(scene);
+            
+            if (wasMaximized) {
+                stage.setMaximized(true);
+            } else {
+                stage.setWidth(width);
+                stage.setHeight(height);
+            }
+            
+        } catch (Exception e) {
+            showAlert("Navigation Error", "Failed to load Reports: " + e.getMessage());
+        }
+    }
+
+    @FXML
+    private void navigateToSettings() {
+        try {
+            Stage stage = (Stage) productTable.getScene().getWindow();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/settings.fxml"));
+            Scene scene = new Scene(loader.load());
+            
+            // Copy window properties
+            boolean wasMaximized = stage.isMaximized();
+            double width = stage.getWidth();
+            double height = stage.getHeight();
+            
+            stage.setScene(scene);
+            
+            if (wasMaximized) {
+                stage.setMaximized(true);
+            } else {
+                stage.setWidth(width);
+                stage.setHeight(height);
+            }
+            
+        } catch (Exception e) {
+            showAlert("Navigation Error", "Failed to load Settings: " + e.getMessage());
+        }
+    }
+
+    @FXML
+    private void handleLogout() {
+        try {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Logout");
+            alert.setHeaderText("Are you sure you want to logout?");
+            alert.setContentText("You will be redirected to the login screen.");
+            
+            if (alert.showAndWait().orElse(ButtonType.CANCEL) == ButtonType.OK) {
+                Stage stage = (Stage) productTable.getScene().getWindow();
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/login.fxml"));
+                Scene scene = new Scene(loader.load());
+                
+                var css = getClass().getResource("/css/style.css");
+                if (css != null) scene.getStylesheets().add(css.toExternalForm());
+                
+                stage.setTitle("ChronoPos - Login");
+                stage.setScene(scene);
+                stage.centerOnScreen();
+                stage.setMaximized(false); // Reset to windowed mode for login
+            }
+        } catch (Exception e) {
+            showAlert("Logout Error", "Failed to logout: " + e.getMessage());
+        }
     }
 }

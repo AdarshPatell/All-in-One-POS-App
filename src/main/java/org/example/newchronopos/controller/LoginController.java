@@ -92,7 +92,33 @@ public class LoginController {
             Stage stage = (Stage) usernameField.getScene().getWindow();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/" + fxmlFile));
             Scene scene = new Scene(loader.load());
+            
+            // Preserve window properties from previous scene
+            boolean wasMaximized = stage.isMaximized();
+            double currentWidth = stage.getWidth();
+            double currentHeight = stage.getHeight();
+            
+            // Add CSS stylesheet
+            var css = getClass().getResource("/css/style.css");
+            if (css != null) scene.getStylesheets().add(css.toExternalForm());
+            
             stage.setScene(scene);
+            
+            // Restore window sizing - prioritize maximized state if it was set
+            if (wasMaximized) {
+                stage.setMaximized(true);
+            } else {
+                // If coming from license screen, use a good default size
+                if (currentWidth < 800 || currentHeight < 600) {
+                    stage.setWidth(1200);
+                    stage.setHeight(800);
+                    stage.centerOnScreen();
+                } else {
+                    stage.setWidth(currentWidth);
+                    stage.setHeight(currentHeight);
+                }
+            }
+            
             stage.show();
         } catch (Exception e) {
             e.printStackTrace();

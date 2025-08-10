@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #1c1c1e;" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.newchronopos.controller.SettingsController">
+
+    <children>
+        <HBox spacing="0" AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.bottomAnchor="0">
+            <!-- Navigation Sidebar -->
+            <VBox prefWidth="200" style="-fx-background-color: #2d2d2d;">
+                <padding>
+                    <Insets top="20" left="15" right="15" bottom="20" />
+                </padding>
+                <children>
+                    <Label text="CRONOPOS" textFill="white">
+                        <font>
+                            <Font size="20.0" />
+                        </font>
+                        <VBox.margin>
+                            <Insets bottom="30" />
+                        </VBox.margin>
+                    </Label>
+
+                    <Button text="Dashboard" styleClass="nav-btn" prefWidth="170" onAction="#navigateToDashboard"/>
+                    <Button text="Transactions" styleClass="nav-btn" onAction="#navigateToTransactions"/>
+                    <Button text="Products" styleClass="nav-btn" onAction="#navigateToProducts"/>
+                    <Button text="Reports" styleClass="nav-btn" onAction="#navigateToReports"/>
+                    <Button text="Settings" styleClass="nav-btn-selected" onAction="#navigateToSettings"/>
+
+                    <VBox fx:id="logoutSection" alignment="BOTTOM_LEFT" spacing="10.0" VBox.vgrow="ALWAYS">
+                        <Button text="Logout" styleClass="nav-btn" onAction="#handleLogout" />
+                    </VBox>
+                </children>
+            </VBox>
+
+            <!-- Settings Content Area -->
+            <BorderPane style="-fx-background-color: #1c1c1e;" HBox.hgrow="ALWAYS">
+               <top>
+                  <!-- Header Section -->
+                  <VBox style="-fx-background-color: #2d2d2d; -fx-padding: 20;">
+                     <HBox alignment="CENTER_LEFT" spacing="10.0">
+                        <Label text="System Settings" textFill="white">
+                            <font>
+                                <Font size="26.0" />
+                            </font>
+                        </Label>
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Button fx:id="saveAllBtn" mnemonicParsing="false" onAction="#saveAllSettings" styleClass="action-btn" text="Save All" />
+                        <Button fx:id="resetBtn" mnemonicParsing="false" onAction="#resetToDefaults" styleClass="action-btn" text="Reset to Defaults" />
+                        <Button fx:id="importBtn" mnemonicParsing="false" onAction="#importSettings" styleClass="action-btn" text="Import" />
+                        <Button fx:id="exportBtn" mnemonicParsing="false" onAction="#exportSettings" styleClass="action-btn" text="Export" />
+                     </HBox>
+                  </VBox>
+               </top>
+   
+               <center>
+                  <SplitPane dividerPositions="0.25" style="-fx-background-color: #1c1c1e;">
+                     
+                     <!-- Left Panel - Categories -->
+                     <VBox style="-fx-background-color: #2d2d2d; -fx-padding: 15;">
+                        <Label text="Categories" textFill="white" style="-fx-font-size: 16px; -fx-font-weight: bold;">
+                           <VBox.margin>
+                              <Insets bottom="10" />
+                           </VBox.margin>
+                        </Label>
+                        <ListView fx:id="categoriesListView" onMouseClicked="#onCategorySelected" style="-fx-background-color: #3d3d3d;" />
+                        
+                        <Separator style="-fx-background-color: #555;">
+                           <VBox.margin>
+                              <Insets top="10" bottom="10" />
+                           </VBox.margin>
+                        </Separator>
+                        
+                        <!-- Search Section -->
+                        <VBox spacing="5.0">
+                           <Label text="Search Settings" textFill="white" style="-fx-font-size: 14px;" />
+                           <TextField fx:id="searchField" onKeyReleased="#onSearchKeyReleased" promptText="Search settings..." style="-fx-background-color: #3d3d3d; -fx-text-fill: white;" />
+                        </VBox>
+                        
+                        <Separator style="-fx-background-color: #555;">
+                           <VBox.margin>
+                              <Insets top="10" bottom="10" />
+                           </VBox.margin>
+                        </Separator>
+                        
+                        <!-- Quick Actions -->
+                        <VBox spacing="5.0">
+                           <Label text="Quick Actions" textFill="white" style="-fx-font-size: 14px;" />
+                           <Button fx:id="addSettingBtn" maxWidth="Infinity" onAction="#addNewSetting" styleClass="nav-btn" text="Add Setting" />
+                           <Button fx:id="refreshBtn" maxWidth="Infinity" onAction="#refreshSettings" styleClass="nav-btn" text="Refresh" />
+                        </VBox>
+                     </VBox>
+                     
+                     <!-- Right Panel - Settings Details -->
+                     <VBox style="-fx-background-color: #1c1c1e;">
+                        
+                        <!-- Settings Level Tabs -->
+                        <TabPane fx:id="settingsTabPane" tabClosingPolicy="UNAVAILABLE" style="-fx-background-color: #1c1c1e;">
+                           
+                           <!-- System Settings Tab -->
+                           <Tab fx:id="systemTab" text="System Settings">
+                              <ScrollPane fitToWidth="true" style="-fx-background-color: #1c1c1e;">
+                                 <VBox fx:id="systemSettingsContainer" spacing="10.0" style="-fx-background-color: #1c1c1e;">
+                                    <padding>
+                                       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                    </padding>
+                                 </VBox>
+                              </ScrollPane>
+                           </Tab>
+                           
+                           <!-- Company Settings Tab -->
+                           <Tab fx:id="companyTab" text="Company Settings">
+                              <VBox style="-fx-background-color: #1c1c1e;">
+                                 <!-- Company Selection -->
+                                 <HBox alignment="CENTER_LEFT" spacing="10.0" style="-fx-background-color: #2d2d2d; -fx-padding: 10;">
+                                    <Label text="Company:" textFill="white" />
+                                    <ComboBox fx:id="companyComboBox" onAction="#onCompanySelected" prefWidth="200.0" promptText="Select Company" />
+                                    <Button fx:id="addCompanyBtn" onAction="#addNewCompany" styleClass="nav-btn" text="Add Company" />
+                                 </HBox>
+                                 
+                                 <ScrollPane fitToWidth="true" style="-fx-background-color: #1c1c1e;">
+                                    <VBox fx:id="companySettingsContainer" spacing="10.0" style="-fx-background-color: #1c1c1e;">
+                                       <padding>
+                                          <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                       </padding>
+                                    </VBox>
+                                 </ScrollPane>
+                              </VBox>
+                           </Tab>
+                           
+                           <!-- User Settings Tab -->
+                           <Tab fx:id="userTab" text="User Settings">
+                              <VBox style="-fx-background-color: #1c1c1e;">
+                                 <!-- User Selection -->
+                                 <HBox alignment="CENTER_LEFT" spacing="10.0" style="-fx-background-color: #2d2d2d; -fx-padding: 10;">
+                                    <Label text="User:" textFill="white" />
+                                    <ComboBox fx:id="userComboBox" onAction="#onUserSelected" prefWidth="200.0" promptText="Select User" />
+                                    <Button fx:id="addUserBtn" onAction="#addNewUser" styleClass="nav-btn" text="Add User" />
+                                 </HBox>
+                                 
+                                 <ScrollPane fitToWidth="true" style="-fx-background-color: #1c1c1e;">
+                                    <VBox fx:id="userSettingsContainer" spacing="10.0" style="-fx-background-color: #1c1c1e;">
+                                       <padding>
+                                          <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                       </padding>
+                                    </VBox>
+                                 </ScrollPane>
+                              </VBox>
+                           </Tab>
+                           
+                        </TabPane>
+                        
+                     </VBox>
+                     
+                  </SplitPane>
+               </center>
+               
+               <bottom>
+                  <!-- Status Bar -->
+                  <HBox alignment="CENTER_LEFT" spacing="10.0" style="-fx-background-color: #2d2d2d; -fx-padding: 10;">
+                     <Label fx:id="statusLabel" text="Ready" textFill="white" />
+                     <Region HBox.hgrow="ALWAYS" />
+                     <Label fx:id="lastModifiedLabel" text="" textFill="#888888" />
+                  </HBox>
+               </bottom>
+               
+            </BorderPane>
+        </HBox>
+    </children>
+</AnchorPane>
