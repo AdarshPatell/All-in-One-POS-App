@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+
+<HBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.newchronopos.controller.AddProductController" spacing="0" style="-fx-background-color: #F8F9FA;">
+   <children>
+      <!-- Main Content Area -->
+      <VBox HBox.hgrow="ALWAYS" style="-fx-background-color: white;">
+         <children>
+            <!-- Header -->
+            <HBox alignment="CENTER_LEFT" spacing="20.0" style="-fx-background-color: #F8F9FA; -fx-padding: 15;">
+               <children>
+                  <Button style="-fx-background-color: transparent; -fx-text-fill: #6C757D;" text="← Add Product" />
+                  <Region HBox.hgrow="ALWAYS" />
+                  <Button style="-fx-background-color: transparent; -fx-text-fill: #6C757D;" text="🔔" />
+                  <Button style="-fx-background-color: transparent; -fx-text-fill: #6C757D;" text="👤" />
+               </children>
+            </HBox>
+
+            <!-- Product Form Content -->
+            <HBox HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
+               <children>
+                  <!-- Step Navigation Sidebar -->
+                  <VBox prefWidth="250.0" style="-fx-background-color: #F8F9FA; -fx-padding: 20;" spacing="10.0">
+                     <children>
+                        <ToggleButton fx:id="productInformationStep" maxWidth="Infinity" style="-fx-background-color: #F4B942; -fx-text-fill: white; -fx-background-radius: 5; -fx-padding: 12; -fx-alignment: center-left;" text="🏷️ Product Information" />
+                        <ToggleButton fx:id="productPicturesStep" maxWidth="Infinity" style="-fx-background-color: #E9ECEF; -fx-text-fill: #6C757D; -fx-background-radius: 5; -fx-padding: 12; -fx-alignment: center-left;" text="🖼️ Product Pictures" />
+                        <ToggleButton fx:id="taxStep" maxWidth="Infinity" style="-fx-background-color: #E9ECEF; -fx-text-fill: #6C757D; -fx-background-radius: 5; -fx-padding: 12; -fx-alignment: center-left;" text="💰 Tax" />
+                        <ToggleButton fx:id="productBarcodesStep" maxWidth="Infinity" style="-fx-background-color: #E9ECEF; -fx-text-fill: #6C757D; -fx-background-radius: 5; -fx-padding: 12; -fx-alignment: center-left;" text="📊 Product Barcodes" />
+                        <ToggleButton fx:id="productAttributesStep" maxWidth="Infinity" style="-fx-background-color: #E9ECEF; -fx-text-fill: #6C757D; -fx-background-radius: 5; -fx-padding: 12; -fx-alignment: center-left;" text="🔧 Product Attributes" />
+                        <ToggleButton fx:id="unitPricesStep" maxWidth="Infinity" style="-fx-background-color: #E9ECEF; -fx-text-fill: #6C757D; -fx-background-radius: 5; -fx-padding: 12; -fx-alignment: center-left;" text="💲 Unit Prices" />
+                     </children>
+                  </VBox>
+
+                  <!-- Step Content Area -->
+                  <VBox HBox.hgrow="ALWAYS" style="-fx-padding: 30;" spacing="20.0">
+                     <children>
+                        <!-- Product Information Step -->
+                        <VBox fx:id="productInformationContent" spacing="20.0">
+                           <children>
+                              <HBox spacing="30.0">
+                                 <children>
+                                    <!-- Product Image -->
+                                    <VBox alignment="CENTER" spacing="10.0">
+                                       <children>
+                                          <ImageView fx:id="productImageView" fitHeight="120.0" fitWidth="120.0" preserveRatio="true" style="-fx-background-color: #F8F9FA; -fx-background-radius: 10;" />
+                                          <Label style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #212529;" text="Product Name" />
+                                          <CheckBox fx:id="canReturnCheck" text="Can Return" />
+                                          <CheckBox fx:id="inStockCheck" text="In Stock" />
+                                       </children>
+                                    </VBox>
+
+                                    <!-- Product Details Form -->
+                                    <GridPane hgap="20.0" vgap="15.0" HBox.hgrow="ALWAYS">
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                       <children>
+                                          <VBox spacing="5.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                                             <children>
+                                                <Label style="-fx-font-weight: bold; -fx-text-fill: #495057;" text="Name" />
+                                                <TextField fx:id="productNameField" promptText="Product Name" style="-fx-background-color: #F8F9FA; -fx-background-radius: 5; -fx-padding: 10;" />
+                                             </children>
+                                          </VBox>
+
+                                          <VBox spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                                             <children>
+                                                <Label style="-fx-font-weight: bold; -fx-text-fill: #495057;" text="SKU" />
+                                                <TextField fx:id="skuField" promptText="SKU" style="-fx-background-color: #F8F9FA; -fx-background-radius: 5; -fx-padding: 10;" />
+                                             </children>
+                                          </VBox>
+
+                                          <VBox spacing="5.0" GridPane.columnIndex="2" GridPane.rowIndex="0">
+                                             <children>
+                                                <Label style="-fx-font-weight: bold; -fx-text-fill: #495057;" text="Category" />
+                                                <ComboBox fx:id="categoryCombo" prefWidth="200.0" promptText="New Category" style="-fx-background-color: #F8F9FA; -fx-background-radius: 5;" />
+                                             </children>
+                                          </VBox>
+
+                                          <VBox spacing="5.0" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                                             <children>
+                                                <Label style="-fx-font-weight: bold; -fx-text-fill: #495057;" text="Brand" />
+                                                <TextField fx:id="brandField" promptText="New Brand" style="-fx-background-color: #F8F9FA; -fx-background-radius: 5; -fx-padding: 10;" />
+                                             </children>
+                                          </VBox>
+
+                                          <VBox spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                             <children>
+                                                <Label style="-fx-font-weight: bold; -fx-text-fill: #495057;" text="Purchase Unit" />
+                                                <TextField fx:id="purchaseUnitField" promptText="Gram(g)" style="-fx-background-color: #F8F9FA; -fx-background-radius: 5; -fx-padding: 10;" />
+                                             </children>
+                                          </VBox>
+
+                                          <VBox spacing="5.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                             <children>
+                                                <Label style="-fx-font-weight: bold; -fx-text-fill: #495057;" text="Selling Unit" />
+                                                <TextField fx:id="sellingUnitField" promptText="Piece(s)" style="-fx-background-color: #F8F9FA; -fx-background-radius: 5; -fx-padding: 10;" />
+                                             </children>
+                                          </VBox>
+
+                                          <VBox spacing="5.0" GridPane.columnIndex="0" GridPane.rowIndex="2">
+                                             <children>
+                                                <Label style="-fx-font-weight: bold; -fx-text-fill: #495057;" text="Supplier" />
+                                                <ComboBox fx:id="supplierCombo" prefWidth="200.0" promptText="Supplier" style="-fx-background-color: #F8F9FA; -fx-background-radius: 5;" />
+                                             </children>
+                                          </VBox>
+
+                                          <VBox spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                             <children>
+                                                <Label style="-fx-font-weight: bold; -fx-text-fill: #495057;" text="Product Group" />
+                                                <TextField fx:id="productGroupField" promptText="Group" style="-fx-background-color: #F8F9FA; -fx-background-radius: 5; -fx-padding: 10;" />
+                                             </children>
+                                          </VBox>
+
+                                          <VBox spacing="5.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                             <children>
+                                                <Label style="-fx-font-weight: bold; -fx-text-fill: #495057;" text="Reorder Level" />
+                                                <TextField fx:id="reorderLevelField" promptText="10" style="-fx-background-color: #F8F9FA; -fx-background-radius: 5; -fx-padding: 10;" />
+                                             </children>
+                                          </VBox>
+
+                                          <VBox spacing="5.0" GridPane.columnIndex="0" GridPane.rowIndex="3" GridPane.columnSpan="3">
+                                             <children>
+                                                <Label style="-fx-font-weight: bold; -fx-text-fill: #495057;" text="Description" />
+                                                <TextArea fx:id="descriptionArea" prefRowCount="3" promptText="PRODUCTS for hungry people" style="-fx-background-color: #F8F9FA; -fx-background-radius: 5;" />
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </GridPane>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+
+                        <!-- Product Pictures Step -->
+                        <VBox fx:id="productPicturesContent" spacing="20.0" visible="false" managed="false">
+                           <children>
+                              <Label style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #212529;" text="Product Pictures" />
+                              <VBox fx:id="picturesContainer" spacing="10.0" style="-fx-background-color: #F8F9FA; -fx-padding: 20; -fx-background-radius: 10;">
+                                 <children>
+                                    <Label text="Upload product images here" style="-fx-text-fill: #6C757D;" />
+                                 </children>
+                              </VBox>
+                              <Button fx:id="addMorePicturesButton" onAction="#addProductPicture" style="-fx-background-color: #F4B942; -fx-text-fill: white; -fx-background-radius: 5; -fx-padding: 10 20;" text="Add More Pictures" />
+                           </children>
+                        </VBox>
+
+                        <!-- Tax Step -->
+                        <VBox fx:id="taxContent" spacing="20.0" visible="false" managed="false">
+                           <children>
+                              <Label style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #212529;" text="Tax Configuration" />
+                              <GridPane hgap="15.0" vgap="15.0">
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                                 <children>
+                                    <VBox spacing="5.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                                       <children>
+                                          <Label style="-fx-font-weight: bold; -fx-text-fill: #495057;" text="Tax Type" />
+                                          <ComboBox fx:id="taxTypeCombo" prefWidth="200.0" promptText="Choose Tax Type" style="-fx-background-color: #F8F9FA; -fx-background-radius: 5;" />
+                                       </children>
+                                    </VBox>
+                                    <VBox spacing="10.0" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                                       <children>
+                                          <CheckBox fx:id="appliedToSellingCheck" text="Applied to Selling" />
+                                          <CheckBox fx:id="appliedToBuyingCheck" text="Applied to Buying" />
+                                          <CheckBox fx:id="includeInPriceCheck" text="Include in Price" />
+                                       </children>
+                                    </VBox>
+                                    <Button onAction="#addTax" style="-fx-background-color: #28A745; -fx-text-fill: white; -fx-background-radius: 5; -fx-padding: 8 15;" text="Add Tax" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                 </children>
+                              </GridPane>
+                              <TableView fx:id="taxTable" prefHeight="200.0" />
+                           </children>
+                        </VBox>
+
+                        <!-- Product Barcodes Step -->
+                        <VBox fx:id="productBarcodesContent" spacing="20.0" visible="false" managed="false">
+                           <children>
+                              <Label style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #212529;" text="Product Barcodes" />
+                              <GridPane hgap="15.0" vgap="15.0">
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                                 <children>
+                                    <VBox spacing="5.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                                       <children>
+                                          <Label style="-fx-font-weight: bold; -fx-text-fill: #495057;" text="Barcode Name" />
+                                          <TextField fx:id="barcodeNameField" promptText="Barcode Name" style="-fx-background-color: #F8F9FA; -fx-background-radius: 5; -fx-padding: 10;" />
+                                       </children>
+                                    </VBox>
+                                    <VBox spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                                       <children>
+                                          <Label style="-fx-font-weight: bold; -fx-text-fill: #495057;" text="Barcode Value" />
+                                          <TextField fx:id="barcodeValueField" promptText="Barcode Value" style="-fx-background-color: #F8F9FA; -fx-background-radius: 5; -fx-padding: 10;" />
+                                       </children>
+                                    </VBox>
+                                    <VBox spacing="10.0" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                                       <children>
+                                          <CheckBox fx:id="isStandardCheck" text="Is Standard" />
+                                          <CheckBox fx:id="isDefaultCheck" text="Is Default" />
+                                       </children>
+                                    </VBox>
+                                    <Button onAction="#addBarcode" style="-fx-background-color: #28A745; -fx-text-fill: white; -fx-background-radius: 5; -fx-padding: 8 15;" text="Add Barcode" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                 </children>
+                              </GridPane>
+                              <TableView fx:id="barcodeTable" prefHeight="200.0" />
+                           </children>
+                        </VBox>
+
+                        <!-- Product Attributes Step -->
+                        <VBox fx:id="productAttributesContent" spacing="20.0" visible="false" managed="false">
+                           <children>
+                              <Label style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #212529;" text="Product Attributes" />
+                              <GridPane hgap="15.0" vgap="15.0">
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                                 <children>
+                                    <VBox spacing="5.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                                       <children>
+                                          <Label style="-fx-font-weight: bold; -fx-text-fill: #495057;" text="Attribute Name" />
+                                          <TextField fx:id="attributeNameField" promptText="Attribute Name" style="-fx-background-color: #F8F9FA; -fx-background-radius: 5; -fx-padding: 10;" />
+                                       </children>
+                                    </VBox>
+                                    <VBox spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                                       <children>
+                                          <Label style="-fx-font-weight: bold; -fx-text-fill: #495057;" text="Attribute Value" />
+                                          <TextField fx:id="attributeValueField" promptText="Attribute Value" style="-fx-background-color: #F8F9FA; -fx-background-radius: 5; -fx-padding: 10;" />
+                                       </children>
+                                    </VBox>
+                                    <VBox spacing="5.0" GridPane.columnIndex="2" GridPane.rowIndex="0">
+                                       <children>
+                                          <Label style="-fx-font-weight: bold; -fx-text-fill: #495057;" text="Arabic Value" />
+                                          <TextField fx:id="arabicValueField" promptText="Arabic Value" style="-fx-background-color: #F8F9FA; -fx-background-radius: 5; -fx-padding: 10;" />
+                                       </children>
+                                    </VBox>
+                                    <Button onAction="#addAttribute" style="-fx-background-color: #28A745; -fx-text-fill: white; -fx-background-radius: 5; -fx-padding: 8 15;" text="Add Attribute" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                 </children>
+                              </GridPane>
+                              <TableView fx:id="attributeTable" prefHeight="200.0" />
+                           </children>
+                        </VBox>
+
+                        <!-- Unit Prices Step -->
+                        <VBox fx:id="unitPricesContent" spacing="20.0" visible="false" managed="false">
+                           <children>
+                              <Label style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #212529;" text="Unit Prices" />
+                              <GridPane hgap="15.0" vgap="15.0">
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                                 <children>
+                                    <VBox spacing="5.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                                       <children>
+                                          <Label style="-fx-font-weight: bold; -fx-text-fill: #495057;" text="Price Type" />
+                                          <ComboBox fx:id="priceTypeCombo" prefWidth="200.0" promptText="Select Price Type" style="-fx-background-color: #F8F9FA; -fx-background-radius: 5;" />
+                                       </children>
+                                    </VBox>
+                                    <VBox spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                                       <children>
+                                          <Label style="-fx-font-weight: bold; -fx-text-fill: #495057;" text="Unit Option" />
+                                          <ComboBox fx:id="unitOptionCombo" prefWidth="200.0" promptText="Unit Option" style="-fx-background-color: #F8F9FA; -fx-background-radius: 5;" />
+                                       </children>
+                                    </VBox>
+                                    <VBox spacing="5.0" GridPane.columnIndex="2" GridPane.rowIndex="0">
+                                       <children>
+                                          <Label style="-fx-font-weight: bold; -fx-text-fill: #495057;" text="Cost" />
+                                          <TextField fx:id="costField" promptText="Cost" style="-fx-background-color: #F8F9FA; -fx-background-radius: 5; -fx-padding: 10;" />
+                                       </children>
+                                    </VBox>
+                                    <VBox spacing="5.0" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                                       <children>
+                                          <Label style="-fx-font-weight: bold; -fx-text-fill: #495057;" text="Price" />
+                                          <TextField fx:id="priceField" promptText="Price" style="-fx-background-color: #F8F9FA; -fx-background-radius: 5; -fx-padding: 10;" />
+                                       </children>
+                                    </VBox>
+                                    <VBox spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                       <children>
+                                          <Label style="-fx-font-weight: bold; -fx-text-fill: #495057;" text="Color" />
+                                          <TextField fx:id="colorField" promptText="Color" style="-fx-background-color: #F8F9FA; -fx-background-radius: 5; -fx-padding: 10;" />
+                                       </children>
+                                    </VBox>
+                                    <Button onAction="#addPrice" style="-fx-background-color: #28A745; -fx-text-fill: white; -fx-background-radius: 5; -fx-padding: 8 15;" text="Add Price" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                 </children>
+                              </GridPane>
+                              <TableView fx:id="priceTable" prefHeight="200.0" />
+                           </children>
+                        </VBox>
+
+                        <!-- Action Buttons -->
+                        <HBox alignment="CENTER_RIGHT" spacing="10.0" style="-fx-padding: 20 0 0 0;">
+                           <children>
+                              <Button fx:id="discardChangesButton" onAction="#discardChanges" style="-fx-background-color: #E9ECEF; -fx-text-fill: #6C757D; -fx-background-radius: 5; -fx-padding: 10 20;" text="Discard Changes" />
+                              <Button fx:id="saveChangesButton" onAction="#handleSaveProduct" style="-fx-background-color: #F4B942; -fx-text-fill: white; -fx-background-radius: 5; -fx-padding: 10 20;" text="Save Changes" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</HBox>

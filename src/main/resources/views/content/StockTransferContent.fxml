@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="org.example.newchronopos.controller.StockTransferController"
+      spacing="30.0" style="-fx-padding: 30;">
+   <children>
+      <Label style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #212529;" text="Stock Transfer" />
+
+      <!-- Transfer Information Section -->
+      <VBox spacing="20.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-padding: 30; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+         <children>
+            <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #212529;" text="Transfer Details" />
+
+            <GridPane hgap="20.0" vgap="15.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="150.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="200.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="150.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="200.0" />
+               </columnConstraints>
+               <children>
+                  <Label text="From Location:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                  <ComboBox fx:id="fromShopCombo" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+                  <Label text="To Location:" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+                  <ComboBox fx:id="toShopCombo" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+
+                  <Label text="Transfer Date:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                  <DatePicker fx:id="transferDatePicker" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                  <Label text="Reference No:" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <TextField fx:id="referenceField" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+               </children>
+            </GridPane>
+         </children>
+      </VBox>
+
+      <!-- Product Selection and Transfer Table -->
+      <VBox spacing="20.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-padding: 30; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+         <children>
+            <HBox alignment="CENTER_LEFT" spacing="15.0">
+               <children>
+                  <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #212529;" text="Products to Transfer" />
+                  <Region HBox.hgrow="ALWAYS" />
+                  <TextField fx:id="productSearchField" promptText="Search products..." style="-fx-background-radius: 20; -fx-padding: 8 15;" />
+                  <Button fx:id="addProductButton" style="-fx-background-color: #F4B942; -fx-text-fill: white; -fx-background-radius: 5; -fx-padding: 10 20;" text="Add Product" />
+               </children>
+            </HBox>
+
+            <TableView fx:id="transferTable" prefHeight="300.0">
+               <columns>
+                  <TableColumn fx:id="productNameColumn" text="Product Name" prefWidth="200.0" />
+                  <TableColumn fx:id="availableStockColumn" text="Available Stock" prefWidth="120.0" />
+                  <TableColumn fx:id="transferQuantityColumn" text="Transfer Quantity" prefWidth="130.0" />
+                  <TableColumn fx:id="unitColumn" text="Unit" prefWidth="80.0" />
+                  <TableColumn fx:id="notesColumn" text="Notes" prefWidth="150.0" />
+                  <TableColumn fx:id="actionsColumn" text="Actions" prefWidth="100.0" />
+               </columns>
+            </TableView>
+
+            <HBox alignment="CENTER_RIGHT" spacing="15.0">
+               <children>
+                  <Button fx:id="clearAllButton" style="-fx-background-color: #6C757D; -fx-text-fill: white; -fx-background-radius: 5; -fx-padding: 10 20;" text="Clear All" />
+                  <Button fx:id="saveTransferButton" style="-fx-background-color: #28A745; -fx-text-fill: white; -fx-background-radius: 5; -fx-padding: 10 20;" text="Process Transfer" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</VBox>

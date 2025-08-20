@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="org.example.newchronopos.controller.components.SidebarController"
+      prefWidth="200.0" style="-fx-background-color: #2C3E50; -fx-padding: 0;">
+   <children>
+      <!-- Logo/Brand Section -->
+      <VBox alignment="CENTER" style="-fx-background-color: #F4B942; -fx-padding: 20;">
+         <children>
+            <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: white;" text="ChronoPOS" />
+         </children>
+      </VBox>
+
+      <!-- Navigation Menu -->
+      <VBox spacing="5.0" style="-fx-padding: 10;">
+         <children>
+            <!-- Dashboard -->
+            <Button fx:id="dashboardBtn"
+                    style="-fx-background-color: #34495E; -fx-text-fill: white; -fx-background-radius: 5; -fx-padding: 10; -fx-alignment: center-left; -fx-pref-width: 180;"
+                    text="📊 Dashboard" />
+
+            <!-- Transaction -->
+            <Button fx:id="transactionBtn"
+                    style="-fx-background-color: #34495E; -fx-text-fill: white; -fx-background-radius: 5; -fx-padding: 10; -fx-alignment: center-left; -fx-pref-width: 180;"
+                    text="💳 Transaction" />
+
+            <!-- Back Office -->
+            <Button fx:id="backOfficeBtn"
+                    style="-fx-background-color: #34495E; -fx-text-fill: white; -fx-background-radius: 5; -fx-padding: 10; -fx-alignment: center-left; -fx-pref-width: 180;"
+                    text="🏢 Back Office" />
+
+            <!-- Product Management -->
+            <Button fx:id="productManagementBtn"
+                    style="-fx-background-color: #34495E; -fx-text-fill: white; -fx-background-radius: 5; -fx-padding: 10; -fx-alignment: center-left; -fx-pref-width: 180;"
+                    text="📦 Product Management" />
+
+            <!-- Stock Management -->
+            <Button fx:id="stockManagementBtn"
+                    style="-fx-background-color: #34495E; -fx-text-fill: white; -fx-background-radius: 5; -fx-padding: 10; -fx-alignment: center-left; -fx-pref-width: 180;"
+                    text="📋 Stock Management" />
+
+            <!-- Reports -->
+            <Button fx:id="reportsBtn"
+                    style="-fx-background-color: #34495E; -fx-text-fill: white; -fx-background-radius: 5; -fx-padding: 10; -fx-alignment: center-left; -fx-pref-width: 180;"
+                    text="📈 Reports" />
+
+            <!-- Settings -->
+            <Button fx:id="settingsBtn"
+                    style="-fx-background-color: #34495E; -fx-text-fill: white; -fx-background-radius: 5; -fx-padding: 10; -fx-alignment: center-left; -fx-pref-width: 180;"
+                    text="⚙ Settings" />
+         </children>
+      </VBox>
+
+      <!-- Spacer -->
+      <Region VBox.vgrow="ALWAYS" />
+
+      <!-- Logout Section -->
+      <HBox alignment="CENTER_LEFT" style="-fx-background-color: #2C3E50; -fx-padding: 10;">
+         <children>
+            <Button fx:id="logoutBtn"
+                    style="-fx-background-color: transparent; -fx-text-fill: #F4B942; -fx-padding: 10; -fx-alignment: center-left;"
+                    text="🚪 Logout" />
+         </children>
+      </HBox>
+   </children>
+</VBox>

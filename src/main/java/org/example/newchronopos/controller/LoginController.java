@@ -11,6 +11,7 @@ import org.example.newchronopos.dao.OwnerDAO;
 import org.example.newchronopos.dao.UserDAO;
 import org.example.newchronopos.model.Owner;
 import org.example.newchronopos.model.User;
+import org.example.newchronopos.service.SessionService;
 
 public class LoginController {
 
@@ -18,6 +19,7 @@ public class LoginController {
     @FXML private PasswordField passwordField;
     @FXML private TextField visiblePasswordField;
     @FXML private Button togglePasswordBtn;
+    @FXML private CheckBox rememberMeCheckBox;
     @FXML private Label lblError;
 
     private boolean isPasswordVisible = false;
@@ -67,9 +69,22 @@ public class LoginController {
             return;
         }
 
+        boolean rememberMe = rememberMeCheckBox != null && rememberMeCheckBox.isSelected();
+
         // Check Owner
         Owner owner = ownerDAO.findByUsername(username);
         if (owner != null && ownerDAO.checkPassword(owner, password)) {
+            // Create a User object from Owner for session management
+            User ownerAsUser = new User();
+            ownerAsUser.setId(owner.getId());
+            ownerAsUser.setEmail(owner.getEmail());
+            ownerAsUser.setFullName(owner.getName());
+            ownerAsUser.setRole("Owner");
+            ownerAsUser.setShopid(1); // Default shop for owner
+
+            // Save session
+            SessionService.saveUserSession(ownerAsUser, rememberMe);
+
             loadScene("OwnerDashboard.fxml");
             return;
         }
@@ -77,8 +92,15 @@ public class LoginController {
         // Check User
         User user = userDAO.findByUsername(username);
         if (user != null && userDAO.checkPassword(user, password)) {
+            // Save session
+            SessionService.saveUserSession(user, rememberMe);
+
+            // Use new modular system instead of direct scene loading
             switch (user.getRole().toLowerCase()) {
-                case "admin", "cashier", "manager" -> loadScene("Products.fxml");
+                case "admin", "cashier", "manager" -> {
+                    Stage stage = (Stage) usernameField.getScene().getWindow();
+                    org.example.newchronopos.ModularPosApplication.switchToModularSystem(stage);
+                }
                 default -> showError("Unknown user role: " + user.getRole());
             }
             return;

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.newchronopos.controller.BackOfficeController">
+   <top>
+      <HBox alignment="CENTER_LEFT" spacing="20.0" style="-fx-background-color: #F8F9FA; -fx-padding: 15;">
+         <children>
+            <Button style="-fx-background-color: transparent; -fx-text-fill: #6C757D;" text="← Client Office" />
+            <Label style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #212529;" text="Back Office" />
+         </children>
+      </HBox>
+   </top>
+   <center>
+      <VBox spacing="40.0" style="-fx-padding: 50;">
+         <children>
+            <!-- Back Office Module Cards -->
+            <GridPane hgap="30.0" vgap="30.0" alignment="CENTER">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <!-- Stock Management Card -->
+                  <VBox fx:id="stockManagementButton" alignment="CENTER" spacing="15.0" style="-fx-background-color: #E9ECEF; -fx-background-radius: 15; -fx-padding: 30; -fx-cursor: hand;" GridPane.columnIndex="0">
+                     <children>
+                        <Label style="-fx-font-size: 32px; -fx-text-fill: #6C757D;" text="📦" />
+                        <Label style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #6C757D;" text="Stock" />
+                        <Label style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #6C757D;" text="Management" />
+                        <Label style="-fx-font-size: 12px; -fx-text-fill: #6C757D;" text="115 Items" />
+                     </children>
+                  </VBox>
+
+                  <!-- Product Management Card -->
+                  <VBox fx:id="productManagementButton" alignment="CENTER" spacing="15.0" style="-fx-background-color: #F4B942; -fx-background-radius: 15; -fx-padding: 30; -fx-cursor: hand;" GridPane.columnIndex="1">
+                     <children>
+                        <Label style="-fx-font-size: 32px; -fx-text-fill: white;" text="🏷️" />
+                        <Label style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: white;" text="Product" />
+                        <Label style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: white;" text="Management" />
+                        <Label style="-fx-font-size: 12px; -fx-text-fill: white;" text="15 Items" />
+                     </children>
+                  </VBox>
+
+                  <!-- Suppliers Management Card -->
+                  <VBox fx:id="suppliersButton" alignment="CENTER" spacing="15.0" style="-fx-background-color: #E9ECEF; -fx-background-radius: 15; -fx-padding: 30; -fx-cursor: hand;" GridPane.columnIndex="2">
+                     <children>
+                        <Label style="-fx-font-size: 32px; -fx-text-fill: #6C757D;" text="🏭" />
+                        <Label style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #6C757D;" text="Suppliers" />
+                        <Label style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #6C757D;" text="Management" />
+                        <Label style="-fx-font-size: 12px; -fx-text-fill: #6C757D;" text="10 Items" />
+                     </children>
+                  </VBox>
+
+                  <!-- Customer Management Card -->
+                  <VBox fx:id="customerButton" alignment="CENTER" spacing="15.0" style="-fx-background-color: #E9ECEF; -fx-background-radius: 15; -fx-padding: 30; -fx-cursor: hand;" GridPane.columnIndex="3">
+                     <children>
+                        <Label style="-fx-font-size: 32px; -fx-text-fill: #6C757D;" text="👥" />
+                        <Label style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #6C757D;" text="Customer" />
+                        <Label style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #6C757D;" text="Management" />
+                        <Label style="-fx-font-size: 12px; -fx-text-fill: #6C757D;" text="15 Items" />
+                     </children>
+                  </VBox>
+
+                  <!-- Payment Options Card -->
+                  <VBox fx:id="paymentOptionsButton" alignment="CENTER" spacing="15.0" style="-fx-background-color: #E9ECEF; -fx-background-radius: 15; -fx-padding: 30; -fx-cursor: hand;" GridPane.columnIndex="4">
+                     <children>
+                        <Label style="-fx-font-size: 32px; -fx-text-fill: #6C757D;" text="💳" />
+                        <Label style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #6C757D;" text="Payment" />
+                        <Label style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #6C757D;" text="Options" />
+                        <Label style="-fx-font-size: 12px; -fx-text-fill: #6C757D;" text="18 Items" />
+                     </children>
+                  </VBox>
+
+                  <!-- Service Charges Card -->
+                  <VBox fx:id="serviceChargesButton" alignment="CENTER" spacing="15.0" style="-fx-background-color: #E9ECEF; -fx-background-radius: 15; -fx-padding: 30; -fx-cursor: hand;" GridPane.columnIndex="5">
+                     <children>
+                        <Label style="-fx-font-size: 32px; -fx-text-fill: #6C757D;" text="⚡" />
+                        <Label style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #6C757D;" text="Service" />
+                        <Label style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #6C757D;" text="Charges" />
+                        <Label style="-fx-font-size: 12px; -fx-text-fill: #6C757D;" text="18 Items" />
+                     </children>
+                  </VBox>
+               </children>
+            </GridPane>
+         </children>
+      </VBox>
+   </center>
+   <left>
+      <!-- Sidebar -->
+      <VBox prefWidth="200.0" style="-fx-background-color: #2C3E50; -fx-padding: 0;">
+         <children>
+            <VBox alignment="CENTER" style="-fx-background-color: #F4B942; -fx-padding: 20;">
+               <children>
+                  <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: white;" text="ChronoPOS" />
+               </children>
+            </VBox>
+
+            <VBox spacing="5.0" style="-fx-padding: 10;">
+               <children>
+                  <Button style="-fx-background-color: #34495E; -fx-text-fill: white; -fx-background-radius: 5; -fx-padding: 10; -fx-alignment: center-left;" text="📊 Dashboard" />
+                  <Button style="-fx-background-color: #34495E; -fx-text-fill: white; -fx-background-radius: 5; -fx-padding: 10; -fx-alignment: center-left;" text="💳 Transaction" />
+                  <Button style="-fx-background-color: #F4B942; -fx-text-fill: white; -fx-background-radius: 5; -fx-padding: 10; -fx-alignment: center-left;" text="🏢 Back Office" />
+                  <Button style="-fx-background-color: #34495E; -fx-text-fill: white; -fx-background-radius: 5; -fx-padding: 10; -fx-alignment: center-left;" text="📈 Reports" />
+                  <Button style="-fx-background-color: #34495E; -fx-text-fill: white; -fx-background-radius: 5; -fx-padding: 10; -fx-alignment: center-left;" text="⚙ Settings" />
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </left>
+   <bottom>
+      <HBox alignment="CENTER_LEFT" style="-fx-background-color: #2C3E50; -fx-padding: 10;">
+         <children>
+            <Button style="-fx-background-color: transparent; -fx-text-fill: #F4B942;" text="🚪 Logout" />
+         </children>
+      </HBox>
+   </bottom>
+</BorderPane>

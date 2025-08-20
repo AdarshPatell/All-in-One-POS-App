@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="org.example.newchronopos.controller.StockManagementController"
+      spacing="40.0" style="-fx-padding: 30;">
+   <children>
+<!--      <Label style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #212529;" text="Stock Management" />-->
+
+      <!-- Stock Management Cards with added bottom margin -->
+      <VBox spacing="20.0">
+         <children>
+            <GridPane hgap="20.0" vgap="20.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <!-- Stock Adjustment Card -->
+                  <VBox fx:id="stockAdjustmentButton" alignment="CENTER" spacing="10.0" style="-fx-background-color: #F4B942; -fx-background-radius: 10; -fx-padding: 20; -fx-cursor: hand;" GridPane.columnIndex="0">
+                     <children>
+                        <Label style="-fx-font-size: 24px; -fx-text-fill: white;" text="⚡" />
+                        <Label style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: white;" text="Stock Adjustment" />
+                        <Label fx:id="stockAdjustmentCount" style="-fx-font-size: 10px; -fx-text-fill: white;" text="20 Items" />
+                     </children>
+                  </VBox>
+
+                  <!-- Stock Transfer Card -->
+                  <VBox fx:id="stockTransferButton" alignment="CENTER" spacing="10.0" style="-fx-background-color: #E9ECEF; -fx-background-radius: 10; -fx-padding: 20; -fx-cursor: hand;" GridPane.columnIndex="1">
+                     <children>
+                        <Label style="-fx-font-size: 24px; -fx-text-fill: #6C757D;" text="🔄" />
+                        <Label style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #6C757D;" text="Stock Transfer" />
+                        <Label fx:id="stockTransferCount" style="-fx-font-size: 10px; -fx-text-fill: #6C757D;" text="15 Items" />
+                     </children>
+                  </VBox>
+
+                  <!-- Goods Received Card -->
+                  <VBox fx:id="goodsReceivedButton" alignment="CENTER" spacing="10.0" style="-fx-background-color: #E9ECEF; -fx-background-radius: 10; -fx-padding: 20; -fx-cursor: hand;" GridPane.columnIndex="2">
+                     <children>
+                        <Label style="-fx-font-size: 24px; -fx-text-fill: #6C757D;" text="📦" />
+                        <Label style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #6C757D;" text="Goods Received" />
+                        <Label fx:id="goodsReceivedCount" style="-fx-font-size: 10px; -fx-text-fill: #6C757D;" text="5 Items" />
+                     </children>
+                  </VBox>
+
+                  <!-- Goods Return Card -->
+                  <VBox fx:id="goodsReturnButton" alignment="CENTER" spacing="10.0" style="-fx-background-color: #E9ECEF; -fx-background-radius: 10; -fx-padding: 20; -fx-cursor: hand;" GridPane.columnIndex="3">
+                     <children>
+                        <Label style="-fx-font-size: 24px; -fx-text-fill: #6C757D;" text="↩️" />
+                        <Label style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #6C757D;" text="Goods Return" />
+                        <Label fx:id="goodsReturnCount" style="-fx-font-size: 10px; -fx-text-fill: #6C757D;" text="3 Items" />
+                     </children>
+                  </VBox>
+
+                  <!-- Goods Replaced Card -->
+                  <VBox fx:id="goodsReplacedButton" alignment="CENTER" spacing="10.0" style="-fx-background-color: #E9ECEF; -fx-background-radius: 10; -fx-padding: 20; -fx-cursor: hand;" GridPane.columnIndex="4">
+                     <children>
+                        <Label style="-fx-font-size: 24px; -fx-text-fill: #6C757D;" text="🔄" />
+                        <Label style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #6C757D;" text="Goods Replaced" />
+                        <Label fx:id="goodsReplacedCount" style="-fx-font-size: 10px; -fx-text-fill: #6C757D;" text="2 Items" />
+                     </children>
+                  </VBox>
+               </children>
+            </GridPane>
+
+            <!-- Add spacing after cards -->
+            <Region prefHeight="20.0" />
+         </children>
+      </VBox>
+
+      <!-- Stock Overview Section (PRESERVED) -->
+      <VBox spacing="20.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-padding: 30; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2); -fx-margin-top: 20;">
+         <children>
+            <HBox alignment="CENTER_LEFT" spacing="15.0">
+               <children>
+                  <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #212529;" text="Stock Overview" />
+                  <Region HBox.hgrow="ALWAYS" />
+                  <Button fx:id="exportStockButton" style="-fx-background-color: #28A745; -fx-text-fill: white; -fx-background-radius: 5; -fx-padding: 10 20;" text="Export Stock" />
+               </children>
+            </HBox>
+
+            <TableView fx:id="stockTable" prefHeight="300.0">
+               <columns>
+                  <TableColumn fx:id="productNameColumn" text="Product Name" />
+                  <TableColumn fx:id="categoryColumn" text="Category" />
+                  <TableColumn fx:id="currentStockColumn" text="Current Stock" />
+                  <TableColumn fx:id="minimumStockColumn" text="Minimum Stock" />
+                  <TableColumn fx:id="statusColumn" text="Status" />
+               </columns>
+            </TableView>
+         </children>
+      </VBox>
+   </children>
+</VBox>

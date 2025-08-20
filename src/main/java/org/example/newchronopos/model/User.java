@@ -20,6 +20,7 @@ public class User {
     private String address;
     private String additionalDetails;
     private String uaeId;
+    private int shopid; // Added missing field
     private Timestamp createdAt;
 
     public User() {}
@@ -27,7 +28,7 @@ public class User {
     public User(int id, String fullName, String username, String email, String password, String role,
                 String phoneNo, double salary, Date dob, boolean changeAccess,
                 Time shiftStartTime, Time shiftEndTime, String address,
-                String additionalDetails, String uaeId, Timestamp createdAt) {
+                String additionalDetails, String uaeId, int shopid, Timestamp createdAt) {
         this.id = id;
         this.fullName = fullName;
         this.username = username;
@@ -43,6 +44,7 @@ public class User {
         this.address = address;
         this.additionalDetails = additionalDetails;
         this.uaeId = uaeId;
+        this.shopid = shopid;
         this.createdAt = createdAt;
     }
 
@@ -165,6 +167,14 @@ public class User {
 
     public void setUaeId(String uaeId) {
         this.uaeId = uaeId;
+    }
+
+    public int getShopid() {
+        return shopid;
+    }
+
+    public void setShopid(int shopid) {
+        this.shopid = shopid;
     }
 
     public Timestamp getCreatedAt() {

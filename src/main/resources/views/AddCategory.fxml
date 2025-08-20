@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+
+<VBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.newchronopos.controller.AddCategoryController" spacing="20.0" style="-fx-background-color: white; -fx-padding: 30;">
+   <children>
+      <Label style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #212529;" text="Add New Category" />
+
+      <HBox spacing="30.0">
+         <children>
+            <!-- Category Image Section -->
+            <VBox alignment="CENTER" spacing="15.0" prefWidth="200.0">
+               <children>
+                  <ImageView fx:id="categoryImageView" fitHeight="120.0" fitWidth="120.0" preserveRatio="true" style="-fx-background-color: #F8F9FA; -fx-background-radius: 10;" />
+                  <Button fx:id="selectImageButton" style="-fx-background-color: #F4B942; -fx-text-fill: white; -fx-background-radius: 5; -fx-padding: 8 15;" text="Select Icon" />
+                  <Label style="-fx-font-size: 12px; -fx-text-fill: #F4B942;" text="Change icon" />
+               </children>
+            </VBox>
+
+            <!-- Category Details Form -->
+            <VBox spacing="15.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <VBox spacing="5.0">
+                     <children>
+                        <Label style="-fx-font-weight: bold; -fx-text-fill: #495057;" text="Name" />
+                        <TextField fx:id="categoryNameField" promptText="Enter Category name" style="-fx-background-color: #F8F9FA; -fx-background-radius: 5; -fx-padding: 10;" />
+                     </children>
+                  </VBox>
+
+                  <HBox spacing="15.0">
+                     <children>
+                        <VBox spacing="5.0" HBox.hgrow="SOMETIMES">
+                           <children>
+                              <Label style="-fx-font-weight: bold; -fx-text-fill: #495057;" text="Filter" />
+                              <ComboBox prefWidth="200.0" promptText="Select menu" style="-fx-background-color: #F8F9FA; -fx-background-radius: 5;" />
+                           </children>
+                        </VBox>
+
+                        <VBox spacing="5.0" HBox.hgrow="SOMETIMES">
+                           <children>
+                              <Label style="-fx-font-weight: bold; -fx-text-fill: #495057;" text="Select Parent Category" />
+                              <ComboBox fx:id="parentCategoryCombo" prefWidth="200.0" style="-fx-background-color: #F8F9FA; -fx-background-radius: 5;" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+
+                  <VBox spacing="5.0">
+                     <children>
+                        <Label style="-fx-font-weight: bold; -fx-text-fill: #495057;" text="Description" />
+                        <TextArea fx:id="descriptionArea" prefRowCount="3" promptText="Write your Category description Here" style="-fx-background-color: #F8F9FA; -fx-background-radius: 5;" />
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+
+      <HBox alignment="CENTER_RIGHT" spacing="10.0" style="-fx-padding: 20 0 0 0;">
+         <children>
+            <Button fx:id="cancelButton" style="-fx-background-color: #E9ECEF; -fx-text-fill: #6C757D; -fx-background-radius: 5; -fx-padding: 10 20;" text="Cancel" />
+            <Button fx:id="saveButton" style="-fx-background-color: #F4B942; -fx-text-fill: white; -fx-background-radius: 5; -fx-padding: 10 20;" text="Save" />
+         </children>
+      </HBox>
+   </children>
+</VBox>

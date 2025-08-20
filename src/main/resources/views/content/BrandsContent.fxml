@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="org.example.newchronopos.controller.BrandsController"
+      spacing="30.0" style="-fx-padding: 30;">
+   <children>
+      <Label style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #212529;" text="Brands Management" />
+
+      <!-- Add New Brand Section -->
+      <HBox alignment="CENTER_LEFT" spacing="15.0">
+         <children>
+            <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #212529;" text="Brand Management" />
+            <Region HBox.hgrow="ALWAYS" />
+            <Button fx:id="addBrandButton" style="-fx-background-color: #007BFF; -fx-text-fill: white; -fx-background-radius: 5; -fx-padding: 10 20;" text="Add New Brand" />
+         </children>
+      </HBox>
+
+      <!-- Brands Table -->
+      <VBox spacing="20.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-padding: 30; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+         <children>
+            <HBox alignment="CENTER_LEFT" spacing="15.0">
+               <children>
+                  <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #212529;" text="Brands List" />
+                  <Region HBox.hgrow="ALWAYS" />
+                  <TextField fx:id="searchField" promptText="Search brands..." style="-fx-background-radius: 20; -fx-padding: 8 15;" />
+               </children>
+            </HBox>
+
+            <TableView fx:id="brandsTable" prefHeight="400.0">
+               <columns>
+                  <TableColumn fx:id="brandIdColumn" text="ID" prefWidth="80.0" />
+                  <TableColumn fx:id="brandNameColumn" text="Brand Name" prefWidth="200.0" />
+                  <TableColumn fx:id="brandNameArabicColumn" text="Arabic Name" prefWidth="200.0" />
+                  <TableColumn fx:id="descriptionColumn" text="Description" prefWidth="250.0" />
+                  <TableColumn fx:id="statusColumn" text="Status" prefWidth="100.0" />
+                  <TableColumn fx:id="actionsColumn" text="Actions" prefWidth="120.0" />
+               </columns>
+            </TableView>
+         </children>
+      </VBox>
+   </children>
+</VBox>

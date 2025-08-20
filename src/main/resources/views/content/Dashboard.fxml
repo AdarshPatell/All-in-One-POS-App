@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="org.example.newchronopos.controller.content.DashboardController"
+      spacing="30.0" style="-fx-padding: 50;">
+   <children>
+      <Label style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #212529;" text="Dashboard" />
+
+      <!-- Dashboard Statistics Cards -->
+      <GridPane hgap="20.0" vgap="20.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" />
+            <ColumnConstraints hgrow="SOMETIMES" />
+            <ColumnConstraints hgrow="SOMETIMES" />
+            <ColumnConstraints hgrow="SOMETIMES" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints />
+         </rowConstraints>
+         <children>
+            <!-- Total Sales Card -->
+            <VBox alignment="CENTER" spacing="10.0" style="-fx-background-color: #28A745; -fx-background-radius: 10; -fx-padding: 20;" GridPane.columnIndex="0">
+               <children>
+                  <Label style="-fx-font-size: 18px; -fx-text-fill: white;" text="💰" />
+                  <Label style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: white;" text="Total Sales" />
+                  <Label style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: white;" text="12450" />
+               </children>
+            </VBox>
+
+            <!-- Total Products Card -->
+            <VBox alignment="CENTER" spacing="10.0" style="-fx-background-color: #007BFF; -fx-background-radius: 10; -fx-padding: 20;" GridPane.columnIndex="1">
+               <children>
+                  <Label style="-fx-font-size: 18px; -fx-text-fill: white;" text="📦" />
+                  <Label style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: white;" text="Total Products" />
+                  <Label style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: white;" text="68" />
+               </children>
+            </VBox>
+
+            <!-- Low Stock Items Card -->
+            <VBox alignment="CENTER" spacing="10.0" style="-fx-background-color: #FFC107; -fx-background-radius: 10; -fx-padding: 20;" GridPane.columnIndex="2">
+               <children>
+                  <Label style="-fx-font-size: 18px; -fx-text-fill: white;" text="⚠️" />
+                  <Label style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: white;" text="Low Stock" />
+                  <Label style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: white;" text="12" />
+               </children>
+            </VBox>
+
+            <!-- Total Customers Card -->
+            <VBox alignment="CENTER" spacing="10.0" style="-fx-background-color: #6F42C1; -fx-background-radius: 10; -fx-padding: 20;" GridPane.columnIndex="3">
+               <children>
+                  <Label style="-fx-font-size: 18px; -fx-text-fill: white;" text="👥" />
+                  <Label style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: white;" text="Customers" />
+                  <Label style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: white;" text="245" />
+               </children>
+            </VBox>
+         </children>
+      </GridPane>
+
+      <!-- Recent Activity Section -->
+      <VBox spacing="20.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-padding: 30;">
+         <children>
+            <Label style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #212529;" text="Recent Activity" />
+
+            <VBox spacing="10.0">
+               <children>
+                  <Label text="✅ Product 'Laptop Dell XPS' added to inventory" />
+                  <Label text="📦 Stock adjustment for 'iPhone 13' - Quantity: +50" />
+                  <Label text="💳 Sale completed - Order #1234 - $299.99" />
+                  <Label text="👤 New customer registered - John Doe" />
+                  <Label text="⚡ Service charge updated for 'Express Delivery'" />
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </children>
+</VBox>

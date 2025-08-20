@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="org.example.newchronopos.controller.GoodsReplacedController"
+      spacing="30.0" style="-fx-padding: 30;">
+   <children>
+      <Label style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #212529;" text="Goods Replaced" />
+
+      <!-- Add New Goods Replacement Section -->
+      <HBox alignment="CENTER_LEFT" spacing="15.0">
+         <children>
+            <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #212529;" text="Goods Replacement Management" />
+            <Region HBox.hgrow="ALWAYS" />
+            <Button fx:id="addGoodsReplacedButton" style="-fx-background-color: #FFC107; -fx-text-fill: white; -fx-background-radius: 5; -fx-padding: 10 20;" text="Process Replacement" />
+         </children>
+      </HBox>
+
+      <!-- Goods Replaced Table -->
+      <VBox spacing="20.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-padding: 30; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+         <children>
+            <HBox alignment="CENTER_LEFT" spacing="15.0">
+               <children>
+                  <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #212529;" text="Recent Replacements" />
+                  <Region HBox.hgrow="ALWAYS" />
+                  <TextField fx:id="searchField" promptText="Search replacements..." style="-fx-background-radius: 20; -fx-padding: 8 15;" />
+               </children>
+            </HBox>
+
+            <TableView fx:id="goodsReplacedTable" prefHeight="400.0">
+               <columns>
+                  <TableColumn fx:id="replacedNoColumn" text="Replacement No" prefWidth="140.0" />
+                  <TableColumn fx:id="replacedDateColumn" text="Date" prefWidth="100.0" />
+                  <TableColumn fx:id="customerColumn" text="Customer" prefWidth="150.0" />
+                  <TableColumn fx:id="reasonColumn" text="Reason" prefWidth="150.0" />
+                  <TableColumn fx:id="statusColumn" text="Status" prefWidth="100.0" />
+                  <TableColumn fx:id="actionsColumn" text="Actions" prefWidth="120.0" />
+               </columns>
+            </TableView>
+         </children>
+      </VBox>
+   </children>
+</VBox>
